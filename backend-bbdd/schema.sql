@@ -1,0 +1,8 @@
+CREATE SCHEMA IF NOT EXISTS secframework;
+USE secframework;
+
+CREATE TABLE IF NOT EXISTS providers();
+
+CREATE TABLE IF NOT EXISTS customers();
+
+CREATE TABLE IF NOT EXISTS sslas();

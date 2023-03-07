@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+  <div class="container" >
+      
+    <div class="row mt-5 justify-content-center align-items-center">
+
+        <div class="card text-center bg-light" style="width: 18rem;">
+            <img src="images/customer-review.png" class="card-img-top">
+            <div class="card-body">
+              <a href="{{url_for("customer_login")}}" class="btn btn-primary">Customer</a>
+            </div>
+        </div>
+        <div class="card text-center offset-md-1 bg-light" style="width: 18rem;">
+            <img src="images/provider.png" class="card-img-top">
+            <div class="card-body">
+              <a href="{{url_for("provider_login")}}" class="btn btn-primary">Provider</a>
+            </div>
+        </div>
+    </div>
+  </div> 
+
+{% endblock %}

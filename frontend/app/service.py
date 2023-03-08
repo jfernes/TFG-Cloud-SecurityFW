@@ -1,4 +1,4 @@
-
+from connector import *
 
 def registerUser(name, email, password):
     print(name)
@@ -9,4 +9,5 @@ def registerUser(name, email, password):
 def checkLogin(email, password):
     print(email)
     print(password)
+    createUser('as','asdf','asdfas')
     return None

@@ -20,6 +20,8 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for("login")}}">Log in</a>
           </li>
+          
+          {% if current_user.is_authenticated %}
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for("upload_ssla")}}">Upload SSLA</a>
@@ -36,6 +38,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for("login")}}">Manage Contracts</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for("logout")}}">Log Out</a>
+          </li>
+
+          {% endif %}
         </ul>
       </div>
     </div>

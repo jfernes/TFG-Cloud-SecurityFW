@@ -11,14 +11,20 @@
             <label class="form-label" for="customFile">The file must be a .XML file</label>
             </div>
 
+        <form action="/upload" method="POST" enctype="multipart/form-data">
             <div class="input-group p-2 text-center">
-            <input type="file" class="form-control" id="customFile" />
+            <input type="file" class="form-control" name="file" />
             </div>
 
             <div class="input-group p-2 text-center">
-            <button type="button" class="btn btn-dark mt-3">Send</button>
+            <button type="button submit" class="btn btn-dark mt-3">Send</button>
             </div>
+
+        </form>
         </div>
     </div>
+
 </div>
+
+
 {% endblock %}

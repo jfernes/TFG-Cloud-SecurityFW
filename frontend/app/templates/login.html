@@ -8,21 +8,27 @@
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Log in</h2>
+
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                {{ error }}
+                </div>
+                {% endif %}
   
-                <form>  
+                <form method="POST">  
                   <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                    <input type="email" id="form3Example3cg" name="email" class="text email form-control form-control-lg" />
                     <label class="form-label" for="form3Example3cg">Email</label>
                   </div>
   
                   <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                    <input type="password" id="form3Example4cg" name="password" class="text form-control form-control-lg" />
                     <label class="form-label" for="form3Example4cg">Password</label>
                   </div>
 
   
                   <div class="d-flex justify-content-center">
-                    <button type="button"
+                    <button type="button submit"
                       class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log in</button>
                   </div>
   

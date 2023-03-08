@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1>
+        Your SSLA
+    </h1>
+
+    {% if is_ssla %}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>SSLA ID</th>
+            <th>Filename</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        {% for ssla in sslas %}
+        <tr>   
+            <td>{{ ssla.id }}</td>
+            <td>{{ ssla.filename }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{"/ssla/"+ssla.id}}">Details</a>
+                <a href="{{"/videos/delete/"+video.id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <h1>There are no SSLAs right now</h1>
+
+    {% endif %}
+    
+    
+</div>
+
+
+{% endblock %}

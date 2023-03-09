@@ -11,13 +11,16 @@ login_manager.init_app(app)  # Para mantener la sesión
 
 app.config['SECRET_KEY'] = 'qH1vprMjavek52cv7Lmfe1FoCexrrV8egFnB21jHhkuOHm8hJUe1hwn7pKEZQ1fioUzDb3sWcNK1pJVVIhyrgvFiIrceXpKJBFIn_i9-LTLBCc4cqaI3gjJJHU6kxuT8bnC7Ng'
 
+
 @app.route('/images/<path:path>')
 def serve_static(path):
     return send_from_directory('images', path)
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -40,12 +43,14 @@ def login():
                 return redirect(url_for('index'))
     return render_template('login.html', form=form, error=error)
 
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     users.clear()
     return redirect(url_for('index'))
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -57,8 +62,8 @@ def register():
             return redirect(url_for('login'))
         else:
             error = "The email is registered"
-    
     return render_template("register.html", form=form, error=error)
+
 
 @app.route("/upload", methods=['GET','POST'])
 @login_required
@@ -79,7 +84,8 @@ def send_ssla():
     if request.method == 'POST':
         file = form.file.data
         filename = form.file.data
-        
+
+ 
 @login_manager.user_loader
 def load_user(user_id):
     for user in users:

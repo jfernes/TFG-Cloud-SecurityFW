@@ -1,7 +1,7 @@
 version: '2'
 services:
 
-  sec-fw-mysql:
+  mysql:
     build: backend-bbdd/.
     ports:
       - 3306
@@ -9,14 +9,14 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=secframework
 
-  sec-fw-frontend:
+  frontend:
     build: frontend/.
     ports:
       - 5000:5000
     environment: 
       - FLASK_APP=app/app.py
       - FLASK_ENV=development
-      - SQL_SERVER=sec-fw-mysql
+      - SQL_SERVER=mysql
 
   
   

@@ -1,20 +1,14 @@
 import os
-from service import *
 from flask import Flask, redirect, render_template, send_from_directory, url_for, request
 from flask_login import LoginManager, login_manager, current_user, login_user, login_required, logout_user
 from forms import *
 from models import *
+from service import *
 
 app = Flask(__name__)
 login_manager = LoginManager()
-login_manager.init_app(app)  # Para mantener la sesión
-
+login_manager.init_app(app)  # Para mantener la sesión 
 app.config['SECRET_KEY'] = 'qH1vprMjavek52cv7Lmfe1FoCexrrV8egFnB21jHhkuOHm8hJUe1hwn7pKEZQ1fioUzDb3sWcNK1pJVVIhyrgvFiIrceXpKJBFIn_i9-LTLBCc4cqaI3gjJJHU6kxuT8bnC7Ng'
-
-
-@app.route('/images/<path:path>')
-def serve_static(path):
-    return send_from_directory('images', path)
 
 
 @app.route("/")
@@ -24,23 +18,22 @@ def index():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    print("entro")
     if current_user.is_authenticated:
-        print("aut")
         return redirect(url_for('index'))
     else:
         error = None
         form = LoginForm(request.form)
-        print("validar")
         if request.method == "POST" and form.validate:
-            print("validado")
-            u = checkLogin(form.email.data, form.password.data)
-            if u == None:
-                error = 'Invalid Credentials. Please try again.'
+            logged_user = loginUser(form.email.data, form.password.data)
+            if logged_user != None:
+                if logged_user.password:    #En este valor tenemos True o False: en función si la contraseña introducida coincide con el hash
+                    users.append(logged_user)
+                    login_user(logged_user)
+                    return redirect(url_for('index'))
+                else:
+                    error = 'Invalid Credentials. Please try again.'
             else:
-                users.append(u)
-                login_user(u, remember=form.remember_me.data)
-                return redirect(url_for('index'))
+                error= 'User not found.'
     return render_template('login.html', form=form, error=error)
 
 
@@ -57,11 +50,11 @@ def register():
     error = None
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate:
-        registered = registerUser(form.name.data, form.email.data, form.password.data)
+        registered = signup(form.email.data, form.password.data, form.name.data)
         if registered:
             return redirect(url_for('login'))
         else:
-            error = "The email is registered"
+            error = "The email is registered. "
     return render_template("register.html", form=form, error=error)
 
 
@@ -95,6 +88,5 @@ def load_user(user_id):
     
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
-    
+    app.run()
     

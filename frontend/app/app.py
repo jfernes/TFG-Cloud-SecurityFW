@@ -7,13 +7,17 @@ from service import *
 
 app = Flask(__name__)
 login_manager = LoginManager()
-login_manager.init_app(app)  # Para mantener la sesión 
+login_manager.init_app(app) 
 app.config['SECRET_KEY'] = 'qH1vprMjavek52cv7Lmfe1FoCexrrV8egFnB21jHhkuOHm8hJUe1hwn7pKEZQ1fioUzDb3sWcNK1pJVVIhyrgvFiIrceXpKJBFIn_i9-LTLBCc4cqaI3gjJJHU6kxuT8bnC7Ng'
-
 
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/ruta")
+@login_required
+def ruta():
+    return render_template("ruta.html")
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -23,17 +27,15 @@ def login():
     else:
         error = None
         form = LoginForm(request.form)
-        if request.method == "POST" and form.validate:
-            logged_user = loginUser(form.email.data, form.password.data)
-            if logged_user != None:
-                if logged_user.password:    #En este valor tenemos True o False: en función si la contraseña introducida coincide con el hash
-                    users.append(logged_user)
-                    login_user(logged_user)
-                    return redirect(url_for('index'))
-                else:
-                    error = 'Invalid Credentials. Please try again.'
+        if request.method == "POST" and form.validate():
+            user = loginUser(form.email.data, form.password.data)
+            if user == None:
+                error = 'Invalid Credentials. Please try again.'
+               
             else:
-                error= 'User not found.'
+                users.append(user)
+                login_user(user)
+                return redirect(url_for('ruta'))
     return render_template('login.html', form=form, error=error)
 
 
@@ -41,43 +43,53 @@ def login():
 @login_required
 def logout():
     logout_user()
-    users.clear()
     return redirect(url_for('index'))
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     error = None
     form = RegisterForm(request.form)
-    if request.method == 'POST' and form.validate:
+    if request.method == 'POST' and form.validate():
         registered = signup(form.email.data, form.password.data, form.name.data)
+        with open('debug.txt', 'a') as f:
+            f.write(form.email.data)
+            f.write (form.password.data)
+            f.write(form.name.data)
         if registered:
             return redirect(url_for('login'))
         else:
-            error = "The email is registered. "
+            error = "The email is registered."
     return render_template("register.html", form=form, error=error)
 
 
 @app.route("/upload", methods=['GET','POST'])
 @login_required
 def upload_ssla():
-    form = sslaForm()
+    error = None
+    form = SSLAForm()
     if request.method == 'POST':
         file = form.file.data
         filename = form.file.data.filename
-        
-        #file.save(os.path.join('./', filename))
+        uploaded = uploadSSLA(current_user.id, file, filename)
+        if uploaded:
+            return redirect(url_for('ssla'))
+        else:
+            error = 'Error uploading SSLA. Try again.'
 
-    return render_template("upload-ssla.html", form=form)
+    return render_template("upload-ssla.html", error=error, form=form)
 
-@app.route("/send", methods=['GET','POST'])
+
+@app.route('/ssla')
 @login_required
-def send_ssla():
-    form = sslaForm()
-    if request.method == 'POST':
-        file = form.file.data
-        filename = form.file.data
-
+def ssla():
+    is_ssla = False
+    sslas = getSSLAS(current_user.id)
+    if(len(sslas) > 0):
+        is_ssla = True
+    return render_template("managessla.html", sslas=sslas, is_ssla=is_ssla)
  
 @login_manager.user_loader
 def load_user(user_id):
@@ -89,4 +101,3 @@ def load_user(user_id):
 
 if __name__ == '__main__':
     app.run()
-    

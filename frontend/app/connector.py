@@ -2,7 +2,7 @@ import mysql.connector
 import os
 
 
-def conenctDB():
+def connectDB():
     connection = mysql.connector.connect(
         host = os.environ.get('SQL_SERVER'),
         user = "root",

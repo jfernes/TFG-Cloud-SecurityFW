@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_manager, current_user, login_user, l
 from forms import *
 from models import *
 from service import *
+import sys
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -28,6 +29,7 @@ def login():
         error = None
         form = LoginForm(request.form)
         if request.method == "POST" and form.validate():
+            sys.stderr.write("valido form")
             user = loginUser(form.email.data, form.password.data)
             if user == None:
                 error = 'Invalid Credentials. Please try again.'
@@ -54,15 +56,17 @@ def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
         registered = signup(form.email.data, form.password.data, form.name.data)
-        with open('debug.txt', 'a') as f:
-            f.write(form.email.data)
-            f.write (form.password.data)
-            f.write(form.name.data)
         if registered:
             return redirect(url_for('login'))
         else:
             error = "The email is registered."
+    else: 
+        '''
+        for key, value in form.errors.items(): 
+            sys.stderr.write('%s:%s\n' % (key, value))
+        '''
     return render_template("register.html", form=form, error=error)
+
 
 
 @app.route("/upload", methods=['GET','POST'])

@@ -37,7 +37,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for("logout")}}">Log Out</a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for("login")}}">Log in</a>
+          </li>
           {% endif %}
+
         </ul>
       </div>
     </div>
@@ -46,8 +51,6 @@
   {%block content%}
   <body> 
   <h3> INFO ABOUT FRAMEWORK - TO DO</h3>
-  <p class="text-center text-muted mt-5 mb-0"> <a href="{{url_for("login")}}"
-    class="fw-bold text-body"><u>Iniciar sesión</u></a></p>
   </body>
   {% endblock  %}
 </body>

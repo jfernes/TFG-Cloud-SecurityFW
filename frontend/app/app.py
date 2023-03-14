@@ -105,6 +105,15 @@ def ssla():
     if(len(sslas) > 0):
         is_ssla = True
     return render_template("managessla.html", sslas=sslas, is_ssla=is_ssla)
+
+@app.route("/ssla/<id>")
+@login_required
+def details(id):
+    data = getSSLA(id, current_user.id)
+    is_data = False
+    if data != None:
+        is_data = True
+    return render_template("details.html", data=data, is_data=is_data)
  
 @login_manager.user_loader
 def load_user(user_id):

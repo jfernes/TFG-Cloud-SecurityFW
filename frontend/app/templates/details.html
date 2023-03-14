@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{%block content%}
+{% if is_data %}
+<main role="main" class="container">
+
+    <div class="starter-template text-center">
+        <h1>{{data["wsag:AgreementOffer"]["@wsag:AgreementId"]}}</h1>
+      
+    </div>
+
+  </main>
+
+
+{% else %}
+<h1>Error</h1>
+{% endif %}
+
+
+{% endblock %}
+<!--
+<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+-->

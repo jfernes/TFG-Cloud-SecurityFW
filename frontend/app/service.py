@@ -1,3 +1,4 @@
+from difflib import restore
 from models import User, SSLA
 from werkzeug.security import generate_password_hash
 from os import remove
@@ -132,3 +133,28 @@ def getSSLAS(userid):
         sslas.append(ssla)
     
     return sslas
+
+def getSSLA(sslaid, userid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT id, filename, data, userid FROM ssla 
+                WHERE userid = %s AND id = %s"""
+    val = (userid, sslaid)
+    
+    cursor.execute(sql, val)
+    result = cursor.fetchone()
+    
+    if result != None:
+        ssla = SSLA(result[0], result[1], result[2], result[3])
+        with open(ssla.filename, 'wb') as fd:   # binary mode
+            fd.write(ssla.data)
+            
+        with open(ssla.filename, 'rb') as fd:
+            js = xmltodict.parse(fd.read())
+        
+        jsond = json.dumps(js)
+        data = json.loads(jsond)
+        return data
+        
+    return None

@@ -5,11 +5,13 @@ from forms import *
 from models import *
 from service import *
 import sys
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app) 
 app.config['SECRET_KEY'] = 'qH1vprMjavek52cv7Lmfe1FoCexrrV8egFnB21jHhkuOHm8hJUe1hwn7pKEZQ1fioUzDb3sWcNK1pJVVIhyrgvFiIrceXpKJBFIn_i9-LTLBCc4cqaI3gjJJHU6kxuT8bnC7Ng'
+app.config['UPLOAD_FOLDER'] = '/tmp/'
 
 @app.route("/")
 def index():
@@ -75,9 +77,13 @@ def upload_ssla():
     error = None
     form = SSLAForm()
     if request.method == 'POST':
-        file = form.file.data
-        filename = form.file.data.filename
-        uploaded = uploadSSLA(current_user.id, file, filename)
+        
+        f = request.files['file']
+        filename = secure_filename(f.filename)
+        # Guardamos el archivo en el directorio "Archivos PDF"
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))        
+        
+        uploaded = uploadSSLA(current_user.email, f, app.config['UPLOAD_FOLDER'] + filename)
         if uploaded:
             return redirect(url_for('ssla'))
         else:
@@ -85,6 +91,11 @@ def upload_ssla():
 
     return render_template("upload-ssla.html", error=error, form=form)
 
+@app.route("/ssla/delete/<id>")
+@login_required
+def delete_ssla(id):
+    deleteSSLA(current_user.id, id)
+    return redirect(url_for("ssla"))
 
 @app.route('/ssla')
 @login_required

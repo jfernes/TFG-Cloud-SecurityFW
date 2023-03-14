@@ -5,3 +5,4 @@ requests==2.27.1
 requests-toolbelt==0.9.1
 mysql-connector-python==8.0.32
 xmltodict==0.13.0
+werkzeug==2.1.2

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsag:AgreementOffer 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:wsag="http://schemas.ggf.org/graap/2007/03/ws-agreement" 
+	xmlns:specs="http://www.specs-project.eu/resources/schemas/xml/SLAtemplate" 
+	xmlns:nist="http://www.specs-project.eu/resources/schemas/xml/control_frameworks/nist" 
+	xsi:schemaLocation=
+	"http://schemas.ggf.org/graap/2007/03/ws-agreement wsag.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/SLAtemplate SLAtemplate.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/control_frameworks/nist nist.xsd"
+    wsag:AgreementId="PROVIDERS_TEMPLATE">
+    <wsag:Name>Template for providers</wsag:Name>
+    <wsag:Context>
+        <wsag:ServiceProvider> Amazon </wsag:ServiceProvider>
+        <wsag:ExpirationTime> 2025-01-01 </wsag:ExpirationTime>
+        <wsag:TemplateName> AMAZON_OFFER_TEMPLATE </wsag:TemplateName>
+    </wsag:Context>
+    
+    <wsag:ServiceDescriptionTerm wsag:Name="SECURE_6G_EDGE" wsag:ServiceName="SECURE_6G_EDGE">
+        <specs:serviceDescription>
+            <specs:serviceResources>
+                <specs:resourcesProvider id="am" name="amazon.es" zone="eu" description="">
+                </specs:resourcesProvider>
+            </specs:serviceResources>
+        </specs:serviceDescription>
+        
+        <specs:capabilities>
+
+            <specs:capability id="6G_EDGE_TRAFFIC_CONFIDENTIALITY" name="Traffic confidentiality" description="Capability of ensuring data confidentiality.">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="SC-12" name="Cryptographic key establishment and management" control_family="SC" securityControl="12" control_enhancement="0">
+                        <nist:description> Establish and manage cryptographic keys when cryptography is employed within the system in accordance with the following key management requirements: [Assignment: organization-defined requirements for key generation, distribution, storage, access, and destruction]. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="SC-13" name="Cryptographic Protection" control_family="SC" securityControl="13" control_enhancement="0">
+                        <nist:description> Implement the following types of cryptography required for each specified cryptographic use: [Assignment: organization-defined types of cryptography for each specified cryptographic use]. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="6G_EDGE_TRAFFIC_RESOURCE_INTEGRITY" name="Traffic and Resource integrity" description="Capability of ensuring data integrity and surviving to incidents that compromise the integrity of data stored by providing a backup service.">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="SC-16" name="Transmission of security and privacy attributes" control_family="SC" securityControl="16" control_enhancement="0">
+                        <nist:description> Associate [Assignment: organization-defined security and privacy attributes] with information exchanged between systems and between system components </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="CP-2_6" name="Contingency plan | Alternate Processing and Storage Sites" control_family="CP" securityControl="2" control_enhancement="6">
+                        <nist:description> Plan for the transfer of [Selection: all; essential] mission and business functions to alternate processing and/or storage sites with minimal or no loss of operational continuity and sustain that continuity through system restoration to primary processing and/or storage sites </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="CP-6" name="Alternate Storage Site" control_family="CP" securityControl="6" control_enhancement="0">
+                        <nist:description> Establish an alternate storage site, including necessary agreements to permit the storage and retrieval of system backup information; and Ensure that the alternate storage site provides controls equivalent to that of the primary site </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="CP-9" name="System backup" control_family="CP" securityControl="9" control_enhancement="0">
+                        <nist:description> The organization: a. Conducts backups of user-level information contained in the information system [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; b. Conducts backups of system-level information contained in the information system [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; c. Conducts backups of information system documentation including security-related documentation [Assignment: organization-defined frequency consistent with recovery time and recovery point objectives]; and d. Protects the confidentiality, integrity, and availability of backup information at storage locations.  </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="CP-10" name="System recovery and reconstitution" control_family="CP" securityControl="10" control_enhancement="0">
+                        <nist:description> Provide for the recovery and reconstitution of the system to a known state within [Assignment: organization-defined time period consistent with recovery time and recovery point objectives] after a disruption, compromise, or failure. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="SI-3" name="Malicious code protection" control_family="SI" securityControl="3" control_enhancement="0">
+                        <nist:description> a. Implement [Selection (one or more): signature based; non-signature based] malicious code protection mechanisms at system entry and exit points to detect and eradicate malicious code;
+                            b. Automatically update malicious code protection mechanisms as new releases are available in accordance with organizational configuration management policy and procedures;
+                            c. Configure malicious code protection mechanisms to:
+                            1. Perform periodic scans of the system [Assignment: organization-defined frequency] and real-time scans of files from external sources at [Selection (one or more): endpoint; network entry and exit points] as the files are downloaded, opened, or executed in accordance with organizational policy; and
+                            2. [Selection (one or more): block malicious code; quarantine malicious code; take [Assignment: organization-defined action]]; and send alert to [Assignment: organization-defined personnel or roles] in response to malicious code detection; and
+                            NIST SP 800-53, REV. 5 SECURITY AND PRIVACY CONTROLS FOR INFORMATION SYSTEMS AND ORGANIZATIONS
+                            d. Address the receipt of false positives during malicious code detection and eradication and the resulting potential impact on the availability of the system. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="SI-7" name="Software, firmware and information integrity" control_family="SI" securityControl="7" control_enhancement="0">
+                        <nist:description> Employ integrity verification tools to detect unauthorized changes to the following software, firmware, and information: [Assignment: organization-defined software, firmware, and information]; and
+                            b. Take the following actions when unauthorized changes to the software, firmware, and information are detected: [Assignment: organization-defined actions]. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="6G_EDGE_TRAFFIC_AUTHENTICITY" name="Traffic authenticity" description="Capability of ensuring data authenticity.">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="SC-16" name="Transmission of security and privacy attributes" control_family="SC" securityControl="16" control_enhancement="0">
+                        <nist:description> Associate [Assignment: organization-defined security and privacy attributes] with information exchanged between systems and between system components </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="" name="" control_family="" securityControl="" control_enhancement="0">
+                        <nist:description>  </nist:description>
+                        <nist:importance_weight> </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="6G_EDGE_RESOURCE_AVAILABILITY" name="Resource availability" description="Capability of detecting, reacting to (or prevent), security attacks aimed at distrupting a system`s availability.">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="SC-5" name="Denial of Service Protection" control_family="SC" securityControl="5" control_enhancement="0">
+                        <nist:description> The information system protects against or limits the effects of denial of service attacks by employing proper security safeguards </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="CA-7" name="Continuous Monitoring" control_family="CA" securityControl="7" control_enhancement="0">
+                        <nist:description> The organization develops a continuous monitoring strategy and implements a continuous monitoring program, which includes the selection of proper metrics, the definition of a monitoring frequency, the establishment of response actions to address results of the analysis of security-related information and the reporting of the security status with a defined frequency </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="SI-4" name="Information System Monitoring" control_family="SI" securityControl="4" control_enhancement="0">
+                        <nist:description> The organization monitors the information system to detect attacks and indicators of potential attacks in accordance with a defined monitoring objectives and unauthorized local, network, and remote connections. It identifies unauthorized use of the information system and deploys proper monitoring tools to collect information about the system. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="IR-4_13" name="Behavior Analysis" control_family="IR" securityControl="4" control_enhancement="13">
+                        <nist:description> Analyze anomalous or suspected adversarial behavior in or related to organization-defined environments or resources  </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="6G_EDGE_RESOURCE_AUTHORIZATION" name="" description="">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="AC-3" name="Access Enforcement" control_family="AC" securityControl="3" control_enhancement="0">
+                        <nist:description> Enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="AC-5" name="Separation of duties" control_family="AC" securityControl="5" control_enhancement="0">
+                        <nist:description> a. Identify and document [Assignment: organization-defined duties of individuals requiring separation]; b. Define system access authorizations to support separation of duties. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="AC-6" name="Least Privilege" control_family="" securityControl="" control_enhancement="0">
+                        <nist:description> Implement the following types of cryptography required for each specified cryptographic use: [Assignment: organization-defined types of cryptography for each specified cryptographic use]. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="AC-17" name="Remote access" control_family="AC" securityControl="17" control_enhancement="0">
+                        <nist:description> a. Establish and document usage restrictions, configuration/connection requirements, and implementation guidance for each type of remote access allowed; b. Authorize each type of remote access to the system prior to allowing such connections. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="AC-18" name="Wireless access" control_family="AC" securityControl="18" control_enhancement="0">
+                        <nist:description> Establish configuration requirements, connection requirements, and implementation guidance for each type of wireless access; b. Authorize each type of wireless access to the system prior to allowing such connections  </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="6G_EDGE_NONREPUDATION" name="Non repudation information" description="Assurance that the sender of information is provided with proof of delivery and the recipient is provided with proof of the sender´s identity, so neither can later deny having processed the information">
+                <specs:controlFramework id="NIST_800_53_r5" framworkName="NIST Control Framework 800-53 rev. 5">
+
+                    <specs:NISTsecurityControl id="AU-8" name="Time Stamps" control_family="AU" securityControl="8" control_enhancement="0">
+                        <nist:description> Use internal system clocks to generate time stamps for audit records; b. Record time stamps for audit records that meet [Assignment: organization-defined granularity of time measurement] and that use Coordinated Universal Time, have a fixed local time offset from Coordinated Universal Time, or that include the local time offset as part of the time stamp. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+
+                    <specs:NISTsecurityControl id="AU-10" name="Non-repudation" control_family="AU" securityControl="10" control_enhancement="0">
+                        <nist:description> Provide irrefutable evidence that an individual (or process acting on behalf of an individual) has performed [Assignment: organization-defined actions to be covered by non-repudiation]. </nist:description>
+                        <nist:importance_weight> MEDIUM </nist:importance_weight>
+                    </specs:NISTsecurityControl>
+                </specs:controlFramework>
+            </specs:capability>
+        </specs:capabilities>
+
+        <specs:security_metrics> 
+
+            <specs:Metric name="" referenceId="">
+                <specs:MetricDefinition> 
+                    <specs:unit name="">
+                        <specs:intervalUnit>
+
+                        </specs:intervalUnit>
+                    </specs:unit>
+                    <specs:scale>
+                        <specs:Quantitative> </specs:Quantitative>
+                    </specs:scale>
+                    <specs:expression> </specs:expression>
+                    <specs:definition> </specs:definition>
+                    <specs:note> </specs:note>
+                </specs:MetricDefinition>
+            </specs:Metric>
+
+        </specs:security_metrics>
+
+        <wsag:ServiceProperties wsag:Name="" wsag:ServiceName="">
+            <wsag:VariableSet>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+            </wsag:VariableSet>
+        </wsag:ServiceProperties>
+    </wsag:ServiceDescriptionTerm>
+</wsag:AgreementOffer>

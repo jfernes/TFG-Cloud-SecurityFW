@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsag:AgreementOffer 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:wsag="http://schemas.ggf.org/graap/2007/03/ws-agreement" 
+	xmlns:specs="http://www.specs-project.eu/resources/schemas/xml/SLAtemplate" 
+	xmlns:ccm="http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm" 
+	xsi:schemaLocation=
+	"http://schemas.ggf.org/graap/2007/03/ws-agreement wsag.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/SLAtemplate SLAtemplate.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm ccm.xsd"
+    wsag:AgreementId="PROVIDERS_TEMPLATE">
+    <wsag:Name> TO_DO </wsag:Name>
+    <wsag:Context>
+        <wsag:ServiceProvider> TO_DO </wsag:ServiceProvider>
+        <wsag:ExpirationTime> TO_DO </wsag:ExpirationTime>
+        <wsag:TemplateName> TO_DO </wsag:TemplateName>
+        <wsag:TemplateId> TO_DO </wsag:TemplateId>
+    </wsag:Context>
+    
+    <wsag:ServiceDescriptionTerm wsag:Name="SECURE_6G_EDGE" wsag:ServiceName="SECURE_6G_EDGE">
+        <specs:serviceDescription>
+            <specs:serviceResources>
+                <specs:resourcesProvider id="am" name="amazon.es" zone="eu" description="">
+                </specs:resourcesProvider>
+            </specs:serviceResources>
+        </specs:serviceDescription>
+        
+        <specs:capabilities>
+
+            <specs:capability id="" name="Data encryption" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Data Encryption" id="CEK-03" control_domain="CEK">
+                        <ccm:description>
+                            Provide cryptographic protection to data 
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Encryption Algorithm" id="CEK-04" control_domain="CEK">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+
+            <specs:capability id="" name="" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                        <ccm:description>
+
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            
+
+        
+        </specs:capabilities>
+
+        <specs:security_metrics> 
+
+            <specs:Metric name="" referenceId="">
+                <specs:MetricDefinition> 
+                    <specs:unit name="">
+                        <specs:intervalUnit>
+
+                        </specs:intervalUnit>
+                    </specs:unit>
+                    <specs:scale>
+                        <specs:Quantitative> </specs:Quantitative>
+                    </specs:scale>
+                    <specs:expression> </specs:expression>
+                    <specs:definition> </specs:definition>
+                    <specs:note> </specs:note>
+                </specs:MetricDefinition>
+            </specs:Metric>
+
+        </specs:security_metrics>
+
+        <wsag:ServiceProperties wsag:Name="" wsag:ServiceName="">
+            <wsag:VariableSet>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+                <wsag:Variable wsag:Name="" wsag:Metric="">
+                    <wsag:Location> </wsag:Location>
+                </wsag:Variable>
+            </wsag:VariableSet>
+        </wsag:ServiceProperties>
+    </wsag:ServiceDescriptionTerm>
+</wsag:AgreementOffer>

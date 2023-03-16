@@ -1,5 +1,5 @@
 from difflib import restore
-from models import User, SSLA
+from models import User, SSLA, Intent
 from werkzeug.security import generate_password_hash
 from os import remove
 import os
@@ -25,10 +25,18 @@ def convertToBinaryData(filename):
         binaryData = file.read()
     return binaryData
 
-def getJson(filename):
-    with open(filename, 'rb') as fd:
-        js = xmltodict.parse(fd.read())
-        return json.dumps(js)
+def processSSLA(sslaid, data):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = "INSERT INTO intent(id, sslaid, name, description) VALUES (%s, %s, %s, %s)"
+    
+    for item in data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:capabilities"]["specs:capability"]:
+        val = (item["@id"], sslaid, item["@name"], item["@description"])
+        cursor.execute(sql, val)
+    
+    connection.commit()
+    connection.close()
 
 def loginUser(email,password):
     # Establecer conexión con la base de datos
@@ -77,7 +85,7 @@ def uploadSSLA(user_id, file, filename):
         
     jsond = json.dumps(js)
     data = json.loads(jsond)
-    sys.stderr.write(data["wsag:AgreementOffer"]["@wsag:AgreementId"])
+    
     sslaid = data["wsag:AgreementOffer"]["@wsag:AgreementId"]
     
     bd = convertToBinaryData(filename)
@@ -100,6 +108,7 @@ def uploadSSLA(user_id, file, filename):
         connection.commit()
         connection.close()
         remove(filename)
+        processSSLA(sslaid, data)
         return True
     else:
         remove(filename)
@@ -134,6 +143,24 @@ def getSSLAS(userid):
     
     return sslas
 
+def downloadSSLAfromDB(sslaid, userid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT id, filename, data, userid FROM ssla 
+                WHERE userid = %s AND id = %s"""
+    val = (userid, sslaid)
+    
+    cursor.execute(sql, val)
+    result = cursor.fetchone()
+    
+    if result != None:
+        ssla = SSLA(result[0], result[1], result[2], result[3])
+        with open(ssla.filename, 'wb') as file:
+            file.write(ssla.data)
+        return ssla.filename
+    return None
+
 def getSSLA(sslaid, userid):
     connection = connectDB()
     cursor = connection.cursor()
@@ -153,8 +180,22 @@ def getSSLA(sslaid, userid):
         with open(ssla.filename, 'rb') as fd:
             js = xmltodict.parse(fd.read())
         
-        jsond = json.dumps(js)
+        jsond = json.dumps(js, indent=4)
         data = json.loads(jsond)
-        return data
+        return data      
         
     return None
+
+def getIntents():
+    intents = []
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT DISTINCT id, name, description FROM intent"""
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for elem in result:
+        intent = Intent(elem[0], "id", elem[1], elem[2])
+        intents.append(intent)
+    
+    return intents

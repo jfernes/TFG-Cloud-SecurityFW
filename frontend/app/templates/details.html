@@ -1,14 +1,52 @@
 {% extends 'index.html' %}
 {%block content%}
 {% if is_data %}
-<main role="main" class="container">
 
-    <div class="starter-template text-center">
+    <div class="starter-template">
+      <div class="container p-3 my-3 border">
         <h1>{{data["wsag:AgreementOffer"]["@wsag:AgreementId"]}}</h1>
-      
+          <h2>Context</h3>
+        
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Name"]}} </h5>
+          <h5 class="text-info-emphasis">Service Provider: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ServiceProvider"]}} </h5>
+          <h5 class="text-info-emphasis">Expiration Time: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ExpirationTime"]}} </h5>
+          <h5 class="text-info-emphasis">Template Name: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:TemplateName"]}} </h5>
+
+        
+          <h2 class="mt-5">Service Description</h3>
+        
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5> &emsp; {{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:Name"]}} </h5>
+          <h5 class="text-info-emphasis">Service Name: </h5>
+          <h5> &emsp; {{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:ServiceName"]}} </h5>
+
+        
+          <h2 class="mt-5">Resources Provider</h4>
+        
+          <h5 class="text-info-emphasis">ID: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@id"]}} </h5>
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@name"]}} </h5>
+          <h5 class="text-info-emphasis">Zone: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@zone"]}} </h5>
+          <h5 class="text-info-emphasis">Description: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@description"]}} </h5>
+
+        
+          <h2 class="mt-5">Capabilities</h3>
+        
+        {% for item in data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:capabilities"]["specs:capability"] %}
+          <h4 class="text-info-emphasis">ID: {{item["@id"]}} </h4>
+          <h5>&emsp; Name: {{item["@name"]}} </h5>
+          <h5>&emsp; Description: {{item["@description"]}} </h5>
+        {% endfor %}
+        </div>
     </div>
 
-  </main>
 
 
 {% else %}

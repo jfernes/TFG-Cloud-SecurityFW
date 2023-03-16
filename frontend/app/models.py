@@ -24,3 +24,10 @@ class SSLA():
         self.filename = filename
         self.data = data 
         self.userid = userid
+        
+class Intent():
+    def __init__(self, id, sslaid, name, description):
+        self.id = id
+        self.sslaid = sslaid
+        self.name = name
+        self.description = description

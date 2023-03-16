@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, send_from_directory, url_for, request
+from flask import Flask, redirect, render_template, send_from_directory, url_for, request, send_file
 from flask_login import LoginManager, login_manager, current_user, login_user, login_required, logout_user
 from forms import *
 from models import *
@@ -31,7 +31,6 @@ def login():
         error = None
         form = LoginForm(request.form)
         if request.method == "POST" and form.validate():
-            sys.stderr.write("valido form")
             user = loginUser(form.email.data, form.password.data)
             if user == None:
                 error = 'Invalid Credentials. Please try again.'
@@ -114,6 +113,20 @@ def details(id):
     if data != None:
         is_data = True
     return render_template("details.html", data=data, is_data=is_data)
+
+@app.route("/ssla/download/<id>")
+@login_required
+def downloadSSLA(id):
+    file = downloadSSLAfromDB(id, current_user.id)
+    return send_file(file, as_attachment=True)
+    
+
+
+@app.route("/ssla/json/<id>")
+@login_required
+def viewJSON(id):
+    data = json.dumps(getSSLA(id, current_user.id), indent=4)
+    return render_template("json.html", data=data)
  
 @login_manager.user_loader
 def load_user(user_id):

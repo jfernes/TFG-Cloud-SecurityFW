@@ -108,7 +108,7 @@ def ssla():
 @app.route("/ssla/<id>")
 @login_required
 def details(id):
-    data = getSSLA(id, current_user.id)
+    data = getSSLA(id)
     is_data = False
     if data != None:
         is_data = True
@@ -117,7 +117,7 @@ def details(id):
 @app.route("/ssla/download/<id>")
 @login_required
 def downloadSSLA(id):
-    file = downloadSSLAfromDB(id, current_user.id)
+    file = downloadSSLAfromDB(id)
     return send_file(file, as_attachment=True)
     
 
@@ -125,8 +125,26 @@ def downloadSSLA(id):
 @app.route("/ssla/json/<id>")
 @login_required
 def viewJSON(id):
-    data = json.dumps(getSSLA(id, current_user.id), indent=4)
+    data = json.dumps(getSSLA(id), indent=4)
     return render_template("json.html", data=data)
+
+@app.route("/negotiate", methods=['GET','POST'])
+@login_required
+def negotiate():
+    is_intents = False
+    intents = getIntents()
+    if(len(intents) > 0):
+        is_intents = True
+        
+    if request.method == 'POST':
+        providers = getProvidersByIntents(request.form.getlist("id"))
+        is_providers = False
+        sys.stderr.write(str(providers))
+        if(len(providers) > 0):
+            is_providers = True
+        return render_template("providers.html", providers=providers, is_providers=is_providers)
+    
+    return render_template("negotiate.html", intents=intents, is_intents=is_intents)
  
 @login_manager.user_loader
 def load_user(user_id):

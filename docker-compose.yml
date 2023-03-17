@@ -8,6 +8,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=secframework
+    cap_add:
+      - SYS_NICE
 
   frontend:
     build: frontend/.

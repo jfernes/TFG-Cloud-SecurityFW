@@ -18,6 +18,12 @@ def connectDB():
 )
     return connection
 
+def contains(big, small):
+    for i in small:
+        if i not in big:
+            return False
+    return True
+
 
 def convertToBinaryData(filename):
     # Convert digital data to binary format
@@ -143,15 +149,14 @@ def getSSLAS(userid):
     
     return sslas
 
-def downloadSSLAfromDB(sslaid, userid):
+def downloadSSLAfromDB(sslaid):
     connection = connectDB()
     cursor = connection.cursor()
     
     sql = """SELECT id, filename, data, userid FROM ssla 
-                WHERE userid = %s AND id = %s"""
-    val = (userid, sslaid)
+                WHERE id = '{}'""".format(sslaid)
     
-    cursor.execute(sql, val)
+    cursor.execute(sql)
     result = cursor.fetchone()
     
     if result != None:
@@ -161,15 +166,14 @@ def downloadSSLAfromDB(sslaid, userid):
         return ssla.filename
     return None
 
-def getSSLA(sslaid, userid):
+def getSSLA(sslaid):
     connection = connectDB()
     cursor = connection.cursor()
     
     sql = """SELECT id, filename, data, userid FROM ssla 
-                WHERE userid = %s AND id = %s"""
-    val = (userid, sslaid)
+                WHERE id = '{}'""".format(sslaid)
     
-    cursor.execute(sql, val)
+    cursor.execute(sql)
     result = cursor.fetchone()
     
     if result != None:
@@ -199,3 +203,48 @@ def getIntents():
         intents.append(intent)
     
     return intents
+
+def getIntentsBySSLA(sslaid):
+    intents=[]
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT id, sslaid, name, description FROM intent
+        WHERE sslaid = '{}'""".format(sslaid)
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for elem in result:
+        intent = Intent(elem[0], elem[1], elem[2], elem[3])
+        intents.append(intent)
+    return intents
+
+def getProvidersByIntents(intents):
+
+    sslas = []
+    providers = []
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT id, filename, data, userid FROM ssla"""
+    
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for elem in result:
+        ssla = SSLA(elem[0], elem[1], elem[2], elem[3])
+        sslas.append(ssla)
+        
+    connection.close()
+    
+    for ssla in sslas:
+        ints = getIntentsBySSLA(ssla.id)
+        ids = []
+        for elem in ints:
+            ids.append(elem.id)
+        result = contains(ids, intents)
+        if result:
+            providers.append(ssla)
+            
+    return providers
+        
+        
+        

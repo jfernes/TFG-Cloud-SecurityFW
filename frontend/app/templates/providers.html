@@ -7,6 +7,12 @@
         Providers available
     </h1>
 
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
     {% if is_providers %}
     <table class="table table-striped">
         <thead class="thead-dark">
@@ -26,7 +32,7 @@
                 <a class="btn btn-primary" href="{{"/ssla/"+ssla.id}}">Details</a>
                 <a href="{{"/ssla/json/"+ssla.id}}" class="btn btn-success">View JSON</a>
                 <a href="{{"/ssla/download/"+ssla.id}}" class="btn btn-warning">Download</a>
-                <a href="" class="btn btn-danger">Contract</a>
+                <a href="{{"/ssla/contract/"+ssla.id+"/"+ssla.userid}}" class="btn btn-danger">Contract</a>
             </td>
         </tr>
         {% endfor %}

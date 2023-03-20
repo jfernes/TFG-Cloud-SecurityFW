@@ -1,5 +1,5 @@
 from difflib import restore
-from models import User, SSLA, Intent
+from models import Contract, User, SSLA, Intent
 from werkzeug.security import generate_password_hash
 from os import remove
 import os
@@ -100,7 +100,7 @@ def uploadSSLA(user_id, file, filename):
     cursor = connection.cursor()
     
     sql = """SELECT id, filename, data, userid FROM ssla 
-                        WHERE id = '{}'""".format(filename)
+                        WHERE id = '{}'""".format(sslaid)
 
     cursor.execute(sql)
     result = cursor.fetchone()
@@ -245,6 +245,43 @@ def getProvidersByIntents(intents):
             providers.append(ssla)
             
     return providers
+
+def createContract(sslaid, providerid, consumerid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT sslaid, providerid, consumerid FROM contract
+            WHERE sslaid = %s and providerid = %s and consumerid = %s"""
+    val = (sslaid, providerid, consumerid)
+    
+    cursor.execute(sql,val)
+    result = cursor.fetchone()
+    
+    if result == None:
+        sql = "INSERT INTO contract(sslaid, providerid, consumerid) VALUES (%s, %s, %s)"
+        val = (sslaid, providerid, consumerid)
+        cursor.execute(sql, val)
+        connection.commit()
+        connection.close()
+        return True
+    else:
+        return False
+    
+def getContracts(consumerid):
+    contracts = []
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT sslaid, providerid, consumerid FROM contract WHERE
+            consumerid = '{}'""".format(consumerid)
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for elem in result:
+        contract = Contract(elem[0], elem[1], elem[2])
+        contracts.append(contract)
+    return contracts
+
+
         
         
         

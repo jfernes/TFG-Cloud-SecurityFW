@@ -145,6 +145,27 @@ def negotiate():
         return render_template("providers.html", providers=providers, is_providers=is_providers)
     
     return render_template("negotiate.html", intents=intents, is_intents=is_intents)
+
+@app.route("/ssla/contract/<sslaid>/<providerid>")
+@login_required
+def contract(sslaid, providerid):
+    error = None
+    created = createContract(sslaid, providerid, current_user.id)
+    if created:
+        return redirect(url_for("manage_contracts"))
+    else:
+        error = "Could not create the contract."
+    return render_template("providers.html", error=error)
+        
+@app.route("/contracts")
+@login_required
+def manage_contracts():
+    is_contract = False
+    contracts = getContracts(current_user.id)
+    if (len(contracts) > 0):
+        is_contract = True
+    return render_template("contracts.html", contracts=contracts, is_contract=is_contract)
+
  
 @login_manager.user_loader
 def load_user(user_id):

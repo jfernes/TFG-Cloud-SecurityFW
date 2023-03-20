@@ -31,3 +31,9 @@ class Intent():
         self.sslaid = sslaid
         self.name = name
         self.description = description
+        
+class Contract():
+    def __init__(self, sslaid, providerid, consumerid):
+        self.sslaid = sslaid
+        self.providerid = providerid
+        self.consumerid = consumerid

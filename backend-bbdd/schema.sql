@@ -26,4 +26,15 @@ CREATE TABLE IF NOT EXISTS intent(
     FOREIGN KEY (sslaid) REFERENCES ssla(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS contract(
+    sslaid varchar(50),
+    providerid varchar(50),
+    consumerid varchar(50),
+    PRIMARY KEY (sslaid, providerid, consumerid),
+    FOREIGN KEY (sslaid) REFERENCES ssla(id) ON DELETE CASCADE,
+    FOREIGN KEY (consumerid) REFERENCES user(email) ON DELETE CASCADE,
+    FOREIGN KEY (providerid) REFERENCES user(email) ON DELETE CASCADE
+
+);
+
 -- CREATE TABLE IF NOT EXISTS seccontrol();

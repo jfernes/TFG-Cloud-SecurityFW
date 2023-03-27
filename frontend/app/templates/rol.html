@@ -5,18 +5,21 @@
     <div class="row mt-5 justify-content-center align-items-center">
 
         <div class="card text-center bg-light" style="width: 18rem;">
-            <img src="images/customer-review.png" class="card-img-top">
+            <img src="images/hombre.png" class="card-img-top mt-3">
             <div class="card-body">
-              <a href="{{url_for("customer_login")}}" class="btn btn-primary">Customer</a>
+              <a href="/login/customer" class="btn btn-primary">Customer</a>
             </div>
         </div>
         <div class="card text-center offset-md-1 bg-light" style="width: 18rem;">
-            <img src="images/provider.png" class="card-img-top">
+            <img src="images/empresario.png" class="card-img-top mt-3">
             <div class="card-body">
-              <a href="{{url_for("provider_login")}}" class="btn btn-primary">Provider</a>
+              <a href="/login/provider" class="btn btn-primary">Provider</a>
             </div>
         </div>
     </div>
+
+    <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="{{url_for("register")}}"
+      class="fw-bold text-body"><u>Sign up</u></a></p>
   </div> 
 
 {% endblock %}

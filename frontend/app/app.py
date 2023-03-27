@@ -13,6 +13,10 @@ login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'qH1vprMjavek52cv7Lmfe1FoCexrrV8egFnB21jHhkuOHm8hJUe1hwn7pKEZQ1fioUzDb3sWcNK1pJVVIhyrgvFiIrceXpKJBFIn_i9-LTLBCc4cqaI3gjJJHU6kxuT8bnC7Ng'
 app.config['UPLOAD_FOLDER'] = '/tmp/'
 
+@app.route('/images/<path:path>')
+def serve_static(path):
+    return send_from_directory('images', path)
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -23,8 +27,8 @@ def ruta():
     return render_template("ruta.html")
 
 
-@app.route("/login", methods=['GET', 'POST'])
-def login():
+@app.route("/login/<rol>", methods=['GET', 'POST'])
+def login(rol):
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     else:
@@ -36,15 +40,24 @@ def login():
                 error = 'Invalid Credentials. Please try again.'
                
             else:
+                user.rol=rol
                 users.append(user)
                 login_user(user)
                 return redirect(url_for('ruta'))
     return render_template('login.html', form=form, error=error)
 
+@app.route("/rol")
+def rol():
+    return render_template("rol.html")
+
 
 @app.route("/logout")
 @login_required
 def logout():
+    users.remove(current_user)
+    '''for user in users:
+        if current_user.id == user.id:
+            users.remove(user)'''
     logout_user()
     return redirect(url_for('index'))
 
@@ -58,7 +71,7 @@ def register():
     if request.method == 'POST' and form.validate():
         registered = signup(form.email.data, form.password.data, form.name.data)
         if registered:
-            return redirect(url_for('login'))
+            return redirect(url_for('rol'))
         else:
             error = "The email is registered."
     else: 

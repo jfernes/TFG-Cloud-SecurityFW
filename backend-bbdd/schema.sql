@@ -37,6 +37,23 @@ CREATE TABLE IF NOT EXISTS contract(
 
 );
 
--- CREATE TABLE IF NOT EXISTS admin(id user);
+CREATE TABLE IF NOT EXISTS seccontrol(
+    id varchar(100),
+    name varchar(100),
+    control_domain varchar(10),
+    description TEXT,
+    intentid varchar(80),
+    PRIMARY KEY (id, intentid),
+    FOREIGN KEY (intentid) REFERENCES intent(id) ON DELETE CASCADE
+);
 
--- CREATE TABLE IF NOT EXISTS seccontrol();
+CREATE TABLE IF NOT EXISTS admin(
+    id varchar(50),
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES user(email) ON DELETE CASCADE
+);
+
+INSERT INTO user(email, name, password) VALUES("admin@um.es", "admin", "admin");
+
+INSERT INTO admin(id) VALUES ("admin@um.es");
+

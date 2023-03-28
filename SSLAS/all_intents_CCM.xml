@@ -26,7 +26,6 @@
         </specs:serviceDescription>
         
         <specs:capabilities>
-
             <specs:capability id="DATA_DELETION" name="Data Deletion" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 

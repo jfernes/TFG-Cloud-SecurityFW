@@ -236,6 +236,8 @@ def getProvidersByIntents(intents):
     connection.close()
     
     for ssla in sslas:
+        if ssla.userid == "admin@um.es":
+            continue
         ints = getIntentsBySSLA(ssla.id)
         ids = []
         for elem in ints:
@@ -281,7 +283,17 @@ def getContracts(consumerid):
         contracts.append(contract)
     return contracts
 
-
+def isAdmin(userid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = "SELECT id FROM admin WHERE id = '{}'".format(userid)
+    
+    cursor.execute(sql)
+    result = cursor.fetchone()
+    if result == None:
+        return False
+    return True
         
         
         

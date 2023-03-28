@@ -19,9 +19,20 @@
 
           {% if current_user.is_authenticated%}
 
-          {% if current_user.rol == "provider" %}
+          {% if current_user.rol == "admin" %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for("upload_ssla")}}">Upload SSLA</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for("ssla")}}">Manage SSLAs</a>
+          </li>
+          {% endif %}
+
+
+          {% if current_user.rol == "provider" %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for("create_ssla")}}">Create SSLA</a>
           </li>
 
           <li class="nav-item">

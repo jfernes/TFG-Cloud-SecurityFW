@@ -41,6 +41,9 @@ def login(rol):
                
             else:
                 user.rol=rol
+                if rol == "admin" and not isAdmin(user.id):
+                    error = 'You are not an admin.'
+                    return render_template('login.html', form=form, error=error)
                 users.append(user)
                 login_user(user)
                 return redirect(url_for('ruta'))
@@ -102,6 +105,12 @@ def upload_ssla():
             error = 'Error uploading SSLA. Try again.'
 
     return render_template("upload-ssla.html", error=error, form=form)
+
+@app.route("/create")
+@login_required
+def create_ssla():
+    pass
+
 
 @app.route("/ssla/delete/<id>")
 @login_required

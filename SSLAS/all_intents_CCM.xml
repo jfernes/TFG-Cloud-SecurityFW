@@ -219,13 +219,6 @@
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
                 </specs:controlFramework>
             </specs:capability>
 

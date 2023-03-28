@@ -36,11 +36,25 @@ def processSSLA(sslaid, data):
     cursor = connection.cursor()
     
     sql = "INSERT INTO intent(id, sslaid, name, description) VALUES (%s, %s, %s, %s)"
+    sqlsc = "INSERT INTO seccontrol(id, name, control_domain, description, intentid) VALUES(%s, %s, %s, %s, %s)"
     
     for item in data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:capabilities"]["specs:capability"]:
-        val = (item["@id"], sslaid, item["@name"], item["@description"])
+        intentid = item["@id"]
+        val = (intentid, sslaid, item["@name"], item["@description"])
         cursor.execute(sql, val)
-    
+        #sys.stderr.write(str(item["specs:controlFramework"]["specs:CCMsecurityControl"]))
+        sys.stderr.write(str(len(item["specs:controlFramework"]["specs:CCMsecurityControl"])) + '\n')
+        if len(item["specs:controlFramework"]["specs:CCMsecurityControl"]) > 1:
+            for elem in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
+                sys.stderr.write(str(elem["@id"]) + " " + str(elem["@name"]) + " " + str(elem["@control_domain"]) + " "
+                                + str(elem["ccm:description"]) + " " + intentid + '\n')
+                val2 = (elem["@id"], elem["@name"], elem["@control_domain"], elem["ccm:description"], intentid)
+                cursor.execute(sqlsc, val2)
+        else:
+            item2 = item["specs:controlFramework"]["specs:CCMsecurityControl"]
+            val2 = (item2["@id"], item2["@name"], item2["@control_domain"], item2["ccm:description"], intentid)
+            cursor.execute(sqlsc, val2)
+        
     connection.commit()
     connection.close()
 

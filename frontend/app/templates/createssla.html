@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+    <h1>
+        Select your Security Intents
+    </h1>
+
+    {% if is_intents %}
+    <form method='POST'>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Intent ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        {% for intent in intents %}
+        <tr>   
+            <td>{{ intent.id }}</td>
+            <td>{{ intent.name }}</td>
+            <td>{{ intent.description }}</td>
+            <td>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="id" value="{{intent.id}}" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Add to SSLA</label>
+                  </div>
+            </td>
+        </tr>
+        {% endfor %}
+        <button type="button submit" class="btn btn-secondary">Next</button>
+    </form>
+    </table>
+    {% else %}
+        <h1>There are no Intents registered</h1>
+
+    {% endif %}
+    
+    
+</div>
+
+
+{% endblock %}

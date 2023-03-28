@@ -27,19 +27,39 @@
         
         <specs:capabilities>
 
-            <specs:capability id="" name="Data encryption" description="">
+            <specs:capability id="DATA_DELETION" name="Data Deletion" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Personal Data Access, Reversal, Rectification and Deletion" id="DSP-11" control_domain="DSP">
+                        <ccm:description>
+                            Define and implement, processes, procedures and technical measures to enable data subjects to request access to, modification, or deletion of their personal data, according to any applicable laws and regulations.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Data Retention and Deletion" id="DSP-16" control_domain="DSP">
+                        <ccm:description>
+                            Data retention, archiving and deletion is managed in accordance with business requirements, applicable laws and regulations.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="DATA_ECNRYPTION" name="Data Encryption" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Data Encryption" id="CEK-03" control_domain="CEK">
                         <ccm:description>
-                            Provide cryptographic protection to data 
+                            Provide cryptographic protection to data at-rest and in-transit, using cryptographic libraries certified to approved standards.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
-
+                            
                     <specs:CCMsecurityControl name="Encryption Algorithm" id="CEK-04" control_domain="CEK">
                         <ccm:description>
-
+                            Use encryption algorithms that are appropriate for data protection, considering the classification of data, associated risks, and usability of the encryption technology.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -47,19 +67,12 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="DATA_LOCATION" name="Data Location" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Data Location" id="DSP-19" control_domain="DSP">
                         <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
+                            Define and implement, processes, procedures and technical measures to specify and document the physical locations of data, including any locations in which data is processed or backed up.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -67,39 +80,52 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="DATA_PORTABILITY" name="Data Portability" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Secure Interoperability and Portability Management" id="IPY-03" control_domain="IPY">
                         <ccm:description>
-
+                            Implement cryptographically secure and standardized network protocols for the management, import and export of data.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Data Portability Contractual Obligations" id="IPY-04" control_domain="IPY">
                         <ccm:description>
-
+                            Agreements must include provisions specifying CSCs access to data upon contract termination and will include:
+                            a. Data format
+                            b. Length of time the data will be stored
+                            c. Scope of the data retained and made available to the CSCs
+                            d. Data deletion policy
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
+
+                    <specs:CCMsecurityControl name="Sensitive Data Transfer" id="DSP-10" control_domain="DSP">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures that ensure any transfer of personal or sensitive data is protected from unauthorized access and only processed within scope as permitted by the respective laws and regulations.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="DATA_INTEGRITY" name="Data Integrity" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Storage Encryption" id="UEM-08" control_domain="UEM">
                         <ccm:description>
-
+                            Protect information from unauthorized disclosure on managed endpoint devices with storage encryption.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Data Loss Prevention" id="UEM-11" control_domain="UEM">
                         <ccm:description>
-
+                            Configure managed endpoints with Data Loss Prevention (DLP) technologies and rules in accordance with a risk assessment.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -107,19 +133,12 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="DATA_BACK-UP" name="Data Back-up" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Backup" id="BCR-08" control_domain="BCR">
                         <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
+                            Periodically backup data stored in the cloud. Ensure the confidentiality, integrity and availability of the backup, and verify data restoration from backup for resiliency.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -127,19 +146,19 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="APPLICATION LOCATION" name="Application Location" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Endpoint Inventory" id="UEM-04" control_domain="UEM">
                         <ccm:description>
-
+                            Maintain an inventory of all endpoints used to store and access company data.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Endpoint Management" id="UEM-05" control_domain="UEM">
                         <ccm:description>
-
+                            Define, implement and evaluate processes, procedures and technical measures to enforce policies and controls for all endpoints permitted to access systems and/or store, transmit, or process organizational data.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -147,19 +166,12 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Software Firewalls" id="UEM-10" control_domain="UEM">
                         <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
+                            Configure managed endpoints with properly configured software firewalls.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -167,19 +179,19 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="APPLICATION_INTEGRITY" name="Application Integrity" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Application Security Baseline Requirements" id="AIS-02" control_domain="AIS">
                         <ccm:description>
-
+                            Establish, document and maintain baseline requirements for securing different applications.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Secure Application Design and Development" id="AIS-04" control_domain="AIS">
                         <ccm:description>
-
+                            Define and implement a SDLC process for application design, development, deployment, and operation in accordance with security requirements defined by the organization.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -187,19 +199,12 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="NETWORK_ENCRYPTION" name="Network Encryption" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Network Security" id="IVS-03" control_domain="IVS">
                         <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
+                            Monitor, encrypt and restrict communications between environments to only authenticated and authorized connections, as justified by the business. Review these configurations at least annually, and support them by a documented justification of all allowed services, protocols, ports, and compensating controls.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -207,12 +212,12 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="AVAILABILITY" name="Availability" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Application Interface Availability" id="IPY-02" control_domain="IPY">
                         <ccm:description>
-
+                            Provide application interface(s) to CSCs so that they programmatically retrieve their data to enable interoperability and portability.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -227,80 +232,293 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="SECURE_DATA_MIGRATION" name="Secure Data and Virtual Machine Migration" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Migration to Cloud Environments" id="IVS-07" control_domain="IVS">
                         <ccm:description>
-
+                            Use secure and encrypted communication channels when migrating servers, services, applications, or data to cloud environments. Such channels must include only up-to-date and approved protocols.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
-                        <ccm:description>
-
-                        </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="IDENTITY_AND_ACCESS_MANAGEMENT" name="Identity and Access Management" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Identity Inventory" id="IAM-03" control_domain="IAM">
                         <ccm:description>
-
+                            Manage, store, and review the information of system identities, and level of access.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Separation of Duties" id="IAM-04" control_domain="IAM">
                         <ccm:description>
-
+                            Employ the separation of duties principle when implementing informationsystem access.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Least Privilege" id="IAM-05" control_domain="IAM">
+                        <ccm:description>
+                            Employ the separation of duties principle when implementing information system access.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="User Access Review" id="IAM-08" control_domain="IAM">
+                        <ccm:description>
+                            Review and revalidate user access for least privilege and separation of duties with a frequency that is commensurate with organizational risk tolerance.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Segregation of Privileged Access Roles" id="IAM-09" control_domain="IAM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the segregation of privileged access roles such that administrative access to data, encryption and key management capabilities and logging capabilities are distinct and separated.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Safeguard Logs Integrity" id="IAM-12" control_domain="IAM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to ensure the logging infrastructure is read-only for all with write access, including privileged access roles, and that the ability to disable it is controlled through a procedure that ensures the segregation of duties and break glass procedures.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Strong Authentication" id="IAM-14" control_domain="IAM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for authenticating access to systems, application and data assets, including multifactor authentication for at least privileged user and sensitive data access. Adopt digital certificates or alternatives which achieve an equivalent level of security for system identities.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Password Management" id="IAM-15" control_domain="IAM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the secure management of passwords.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Authorization Mechanisms" id="IAM-16" control_domain="IAM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to verify access to data and system functions is authorized.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="" name="" description="">
+            <specs:capability id="KEY_MANAGEMENT" name="Key Management" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Roles and Responsabilities" id="CEK-02" control_domain="CEK">
                         <ccm:description>
-
+                            Define and implement cryptographic, encryption and key management roles and responsibilities.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Key Generation" id="CEK-10" control_domain="CEK">
                         <ccm:description>
-
+                            Generate Cryptographic keys using industry accepted cryptographic libraries specifying the algorithm strength and the random number generator used.   
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Purpose" id="CEK-11" control_domain="CEK">
+                        <ccm:description>
+                            Manage cryptographic secret and private keys that are provisioned for a unique purpose.  
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Rotation" id="CEK-12" control_domain="CEK">
+                        <ccm:description>
+                            Rotate cryptographic keys in accordance with the calculated cryptoperiod, which includes provisions for considering the risk of information disclosure and legal and regulatory requirements.   
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Revocation" id="CEK-13" control_domain="CEK">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to revoke and remove cryptographic keys prior to the end of its established cryptoperiod, when a key is compromised, or an entity is no longer part of the organization, which include provisions for legal and regulatory requirements.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Destruction" id="CEK-14" control_domain="CEK">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to destroy keys stored outside a secure environment and revoke keys stored in Hardware Security Modules (HSMs) when they are no longer needed, which include provisions for legal and regulatory requirements.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Activation" id="CEK-15" control_domain="CEK">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to create keys in a pre-activated state when they have been generated but not authorized for use, which include provisions for legal and regulatory requirements.  
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Suspension" id="CEK-16" control_domain="CEK">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to monitor, review and approve key transitions from any state to/from suspension, which include provisions for legal and regulatory requirements.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Key Inventory Management" id="CEK-21" control_domain="CEK">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures in order for the key management system to track and report all cryptographic materials and changes in status, which include provisions for legal and regulatory requirements.  
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
             </specs:capability>
 
-
-            <specs:capability id="" name="" description="">
+            <specs:capability id="LOGGING" name="Logging" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Log Protection" id="LOG-09" control_domain="LOG">
                         <ccm:description>
+                            The information system protects audit records from unauthorized access, modification, and deletion. 
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
 
+                    <specs:CCMsecurityControl name="Encryption Monitoring and Reporting" id="LOG-10" control_domain="LOG">
+                        <ccm:description>
+                            Establish and maintain a monitoring and internal reporting capability over the operations of cryptographic, encryption and key management policies, processes, procedures, and controls.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Transaction/Activity Logging" id="LOG-11" control_domain="LOG">
+                        <ccm:description>
+                            Log and monitor key lifecycle management events to enable auditing and reporting on usage of cryptographic keys.   
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Access Control Logs" id="LOG-12" control_domain="LOG">
+                        <ccm:description>
+                            Monitor and log physical access using an auditable access control system.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Failures And Anomalies Reporting" id="LOG-13" control_domain="LOG">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the reporting of anomalies and failures of the monitoring system and provide immediate notification to the accountable party.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="AUDITING" name="Auditing" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Independent Assessments" id="A&A-02" control_domain="A&A">
+                        <ccm:description>
+                            Conduct independent audit and assurance assessments according to relevant standards at least annually. 
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&A-03" control_domain="A&A">
+                        <ccm:description>
+                            Perform independent audit and assurance assessments according to risk-based plans and policies.  
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Audit Management Process" id="A&A-05" control_domain="A&A">
+                        <ccm:description>
+                            Define and implement an Audit Management process to support audit planning, risk analysis, security control assessment, conclusion, remediation schedules, report generation, and review of past reports and supporting evidence.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Remediation" id="A&A-06" control_domain="A&A">
+                        <ccm:description>
+                            Establish, document, approve, communicate, apply, evaluate and maintain a risk-based corrective action plan to remediate audit findings, review and report remediation status to relevant stakeholders.       
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="CUSTOMER_PRIVACY" name="Customer Privacy" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Secure Disposal" id="DSP-02" control_domain="DSP">
+                        <ccm:description>
+                            Apply industry accepted methods for the secure disposal of data from storage media such that data is not recoverable by any forensic means.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Data classification" id="DSP-04" control_domain="DSP">
+                        <ccm:description>
+                            Classify data according to its type and sensitivity level.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Sensitiver Data Protection" id="DSP-17" control_domain="DSP">
+                        <ccm:description>
+                            Define and implement, processes, procedures and technical measures to protect sensitive data throughout it's lifecycle.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+            <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Security Monitoring and Alerting" id="LOG-03" control_domain="LOG">
+                        <ccm:description>
+                            Identify and monitor security-related events within applications and the underlying infrastructure. Define and implement a system to generate alerts to responsible stakeholders based on such events and corresponding metrics.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="" id="" control_domain="">
+                    <specs:CCMsecurityControl name="Detection Updates" id="TVM-04" control_domain="TVM">
                         <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to update detection tools, threat signatures, and indicators of compromise on a weekly, or more frequent basis.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
 
+                    <specs:CCMsecurityControl name="Vulnerability Identification" id="TVM-07" control_domain="TVM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the detection of vulnerabilities on organizationally managed assets at least monthly.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Vulnerability Priorization" id="TVM-08" control_domain="TVM">
+                        <ccm:description>
+                            Use a risk-based model for effective prioritization of vulnerability remediation using an industry recognized framework.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the periodic performance of penetration testing by independent third parties.
                         </ccm:description>
                         <ccm:importante_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
@@ -308,8 +526,52 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            
+            <specs:capability id="BREACH_REPORTING" name="Breach Reporting" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
+                    <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the periodic performance of penetration testing by independent third parties.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Vulnerability Management Reporting" id="TVM-09" control_domain="TVM">
+                        <ccm:description>
+                            Define and implement a process for tracking and reporting vulnerability identification and remediation activities that includes stakeholder notification.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Failures and Anomalies Reporting" id="LOG-13" control_domain="LOG">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures for the reporting of anomalies and failures of the monitoring system and provide immediate notification to the accountable party.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+
+             <specs:capability id="RECOVERY" name="Recovery" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Vulnerability Remediation Schedule" id="TVM-03" control_domain="TVM">
+                        <ccm:description>
+                            Define, implement and evaluate processes, procedures and technical measures to enable both scheduled and emergency responses to vulnerability identifications, based on the identified risk.
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Vulnerability Management Metrics" id="TVM-10" control_domain="TVM">
+                        <ccm:description>
+                            Establish, monitor and report metrics for vulnerability identification and remediation at defined intervals.             
+                        </ccm:description>
+                        <ccm:importante_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
         
         </specs:capabilities>
 

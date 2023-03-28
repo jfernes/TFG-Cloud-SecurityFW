@@ -34,14 +34,14 @@
                         <ccm:description>
                             Define and implement, processes, procedures and technical measures to enable data subjects to request access to, modification, or deletion of their personal data, according to any applicable laws and regulations.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Data Retention and Deletion" id="DSP-16" control_domain="DSP">
                         <ccm:description>
                             Data retention, archiving and deletion is managed in accordance with business requirements, applicable laws and regulations.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -54,14 +54,14 @@
                         <ccm:description>
                             Provide cryptographic protection to data at-rest and in-transit, using cryptographic libraries certified to approved standards.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
                             
                     <specs:CCMsecurityControl name="Encryption Algorithm" id="CEK-04" control_domain="CEK">
                         <ccm:description>
                             Use encryption algorithms that are appropriate for data protection, considering the classification of data, associated risks, and usability of the encryption technology.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -74,7 +74,7 @@
                         <ccm:description>
                             Define and implement, processes, procedures and technical measures to specify and document the physical locations of data, including any locations in which data is processed or backed up.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -87,7 +87,7 @@
                         <ccm:description>
                             Implement cryptographically secure and standardized network protocols for the management, import and export of data.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Data Portability Contractual Obligations" id="IPY-04" control_domain="IPY">
@@ -98,16 +98,14 @@
                             c. Scope of the data retained and made available to the CSCs
                             d. Data deletion policy
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Sensitive Data Transfer" id="DSP-10" control_domain="DSP">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures that ensure any transfer of personal or sensitive data is protected from unauthorized access and only processed within scope as permitted by the respective laws and regulations.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -120,14 +118,14 @@
                         <ccm:description>
                             Protect information from unauthorized disclosure on managed endpoint devices with storage encryption.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Data Loss Prevention" id="UEM-11" control_domain="UEM">
                         <ccm:description>
                             Configure managed endpoints with Data Loss Prevention (DLP) technologies and rules in accordance with a risk assessment.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -140,7 +138,7 @@
                         <ccm:description>
                             Periodically backup data stored in the cloud. Ensure the confidentiality, integrity and availability of the backup, and verify data restoration from backup for resiliency.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -153,14 +151,14 @@
                         <ccm:description>
                             Maintain an inventory of all endpoints used to store and access company data.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Endpoint Management" id="UEM-05" control_domain="UEM">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures to enforce policies and controls for all endpoints permitted to access systems and/or store, transmit, or process organizational data.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -173,7 +171,7 @@
                         <ccm:description>
                             Configure managed endpoints with properly configured software firewalls.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -186,14 +184,14 @@
                         <ccm:description>
                             Establish, document and maintain baseline requirements for securing different applications.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Secure Application Design and Development" id="AIS-04" control_domain="AIS">
                         <ccm:description>
                             Define and implement a SDLC process for application design, development, deployment, and operation in accordance with security requirements defined by the organization.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -206,7 +204,7 @@
                         <ccm:description>
                             Monitor, encrypt and restrict communications between environments to only authenticated and authorized connections, as justified by the business. Review these configurations at least annually, and support them by a documented justification of all allowed services, protocols, ports, and compensating controls.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -219,14 +217,14 @@
                         <ccm:description>
                             Provide application interface(s) to CSCs so that they programmatically retrieve their data to enable interoperability and portability.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="" id="" control_domain="">
                         <ccm:description>
 
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -427,28 +425,28 @@
             <specs:capability id="AUDITING" name="Auditing" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="Independent Assessments" id="A&A-02" control_domain="A&A">
+                    <specs:CCMsecurityControl name="Independent Assessments" id="A&amp;amp;amp;amp;A-02" control_domain="A&amp;amp;amp;A">
                         <ccm:description>
                             Conduct independent audit and assurance assessments according to relevant standards at least annually. 
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&A-03" control_domain="A&A">
+                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&amp;amp;amp;A-03" control_domain="A&amp;amp;amp;A">
                         <ccm:description>
                             Perform independent audit and assurance assessments according to risk-based plans and policies.  
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Audit Management Process" id="A&A-05" control_domain="A&A">
+                    <specs:CCMsecurityControl name="Audit Management Process" id="A&amp;amp;amp;A-05" control_domain="A&amp;amp;amp;A">
                         <ccm:description>
                             Define and implement an Audit Management process to support audit planning, risk analysis, security control assessment, conclusion, remediation schedules, report generation, and review of past reports and supporting evidence.
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Remediation" id="A&A-06" control_domain="A&A">
+                    <specs:CCMsecurityControl name="Remediation" id="A&amp;amp;amp;A-06" control_domain="A&amp;amp;amp;A">
                         <ccm:description>
                             Establish, document, approve, communicate, apply, evaluate and maintain a risk-based corrective action plan to remediate audit findings, review and report remediation status to relevant stakeholders.       
                         </ccm:description>
@@ -492,35 +490,35 @@
                         <ccm:description>
                             Identify and monitor security-related events within applications and the underlying infrastructure. Define and implement a system to generate alerts to responsible stakeholders based on such events and corresponding metrics.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Detection Updates" id="TVM-04" control_domain="TVM">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures to update detection tools, threat signatures, and indicators of compromise on a weekly, or more frequent basis.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Vulnerability Identification" id="TVM-07" control_domain="TVM">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures for the detection of vulnerabilities on organizationally managed assets at least monthly.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Vulnerability Priorization" id="TVM-08" control_domain="TVM">
                         <ccm:description>
                             Use a risk-based model for effective prioritization of vulnerability remediation using an industry recognized framework.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures for the periodic performance of penetration testing by independent third parties.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -533,21 +531,21 @@
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures for the periodic performance of penetration testing by independent third parties.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Vulnerability Management Reporting" id="TVM-09" control_domain="TVM">
                         <ccm:description>
                             Define and implement a process for tracking and reporting vulnerability identification and remediation activities that includes stakeholder notification.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Failures and Anomalies Reporting" id="LOG-13" control_domain="LOG">
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures for the reporting of anomalies and failures of the monitoring system and provide immediate notification to the accountable party.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
@@ -560,14 +558,14 @@
                         <ccm:description>
                             Define, implement and evaluate processes, procedures and technical measures to enable both scheduled and emergency responses to vulnerability identifications, based on the identified risk.
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                     <specs:CCMsecurityControl name="Vulnerability Management Metrics" id="TVM-10" control_domain="TVM">
                         <ccm:description>
                             Establish, monitor and report metrics for vulnerability identification and remediation at defined intervals.             
                         </ccm:description>
-                        <ccm:importante_weight> </ccm:importance_weight>
+                        <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>

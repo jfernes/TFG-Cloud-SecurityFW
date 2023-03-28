@@ -37,4 +37,6 @@ CREATE TABLE IF NOT EXISTS contract(
 
 );
 
+-- CREATE TABLE IF NOT EXISTS admin(id user);
+
 -- CREATE TABLE IF NOT EXISTS seccontrol();

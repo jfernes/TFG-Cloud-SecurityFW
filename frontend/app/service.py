@@ -43,8 +43,8 @@ def processSSLA(sslaid, data):
         val = (intentid, sslaid, item["@name"], item["@description"])
         cursor.execute(sql, val)
         #sys.stderr.write(str(item["specs:controlFramework"]["specs:CCMsecurityControl"]))
-        sys.stderr.write(str(len(item["specs:controlFramework"]["specs:CCMsecurityControl"])) + '\n')
-        if len(item["specs:controlFramework"]["specs:CCMsecurityControl"]) > 1:
+        
+        if '@id' not in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
             for elem in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
                 sys.stderr.write(str(elem["@id"]) + " " + str(elem["@name"]) + " " + str(elem["@control_domain"]) + " "
                                 + str(elem["ccm:description"]) + " " + intentid + '\n')

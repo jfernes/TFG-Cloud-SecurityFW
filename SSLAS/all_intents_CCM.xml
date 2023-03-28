@@ -417,28 +417,28 @@
             <specs:capability id="AUDITING" name="Auditing" description="">
                 <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="Independent Assessments" id="A&amp;amp;amp;amp;A-02" control_domain="A&amp;amp;amp;A">
+                    <specs:CCMsecurityControl name="Independent Assessments" id="A&amp;A-02" control_domain="A&amp;A">
                         <ccm:description>
                             Conduct independent audit and assurance assessments according to relevant standards at least annually. 
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&amp;amp;amp;A-03" control_domain="A&amp;amp;amp;A">
+                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&amp;A-03" control_domain="A&amp;A">
                         <ccm:description>
                             Perform independent audit and assurance assessments according to risk-based plans and policies.  
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Audit Management Process" id="A&amp;amp;amp;A-05" control_domain="A&amp;amp;amp;A">
+                    <specs:CCMsecurityControl name="Audit Management Process" id="A&amp;A-05" control_domain="A&amp;A">
                         <ccm:description>
                             Define and implement an Audit Management process to support audit planning, risk analysis, security control assessment, conclusion, remediation schedules, report generation, and review of past reports and supporting evidence.
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Remediation" id="A&amp;amp;amp;A-06" control_domain="A&amp;amp;amp;A">
+                    <specs:CCMsecurityControl name="Remediation" id="A&amp;A-06" control_domain="A&amp;A">
                         <ccm:description>
                             Establish, document, approve, communicate, apply, evaluate and maintain a risk-based corrective action plan to remediate audit findings, review and report remediation status to relevant stakeholders.       
                         </ccm:description>

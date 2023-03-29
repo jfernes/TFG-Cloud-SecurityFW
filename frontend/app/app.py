@@ -98,7 +98,7 @@ def upload_ssla():
         # Guardamos el archivo en el directorio "Archivos PDF"
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))        
         
-        uploaded = uploadSSLA(current_user.email, f, app.config['UPLOAD_FOLDER'] + filename)
+        uploaded = uploadSSLA(current_user.email, app.config['UPLOAD_FOLDER'] + filename, True)
         if uploaded:
             return redirect(url_for('ssla'))
         else:
@@ -106,10 +106,39 @@ def upload_ssla():
 
     return render_template("upload-ssla.html", error=error, form=form)
 
-@app.route("/create")
+@app.route("/create", methods=['GET','POST'])
 @login_required
 def create_ssla():
-    pass
+    is_intents = False
+    intents = getIntents()
+    if(len(intents) > 0):
+        is_intents = True
+        
+    if request.method == 'POST':
+        agreement_id = request.form['agreement_id']
+        ssla_name = request.form['ssla_name']
+        service_provider = request.form['service_provider']
+        expiration_time = request.form['expiration_time']
+        template_name = request.form['template_name']
+        template_id = request.form['template_id']
+        service_description_name = request.form['service_description_name']
+        service_name = request.form['service_name']
+        resource_provider_id = request.form['resource_provider_id']
+        resource_provider_name = request.form['resource_provider_name']
+        resource_provider_zone = request.form['resource_provider_zone']
+        
+        ints = request.form.getlist("id")
+        
+        created = createSSLA(agreement_id, ssla_name, service_provider, expiration_time,
+        template_name, template_id, service_description_name,
+        service_name, resource_provider_id, resource_provider_name, 
+        resource_provider_zone, ints, current_user.id)
+        
+        if created:
+            pass
+        
+    
+    return render_template("createssla.html", intents=intents, is_intents=is_intents)
 
 
 @app.route("/ssla/delete/<id>")

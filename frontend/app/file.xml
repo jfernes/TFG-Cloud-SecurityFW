@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsag:AgreementOffer 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:wsag="http://schemas.ggf.org/graap/2007/03/ws-agreement" 
+	xmlns:specs="http://www.specs-project.eu/resources/schemas/xml/SLAtemplate" 
+	xmlns:ccm="http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm" 
+	xsi:schemaLocation="http://schemas.ggf.org/graap/2007/03/ws-agreement wsag.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/SLAtemplate SLAtemplate.xsd 
+	http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm ccm.xsd"
+        wsag:AgreementId="PROVIDERS_TEMPLATE">
+        <wsag:Name> TO_DO </wsag:Name>
+        <wsag:Context>
+            <wsag:ServiceProvider> TO_DO </wsag:ServiceProvider>
+            <wsag:ExpirationTime> TO_DO </wsag:ExpirationTime>
+            <wsag:TemplateName> TO_DO </wsag:TemplateName>
+            <wsag:TemplateId> TO_DO </wsag:TemplateId>
+        </wsag:Context>
+        
+        <wsag:ServiceDescriptionTerm wsag:Name="SECURE_6G_EDGE" wsag:ServiceName="SECURE_6G_EDGE"> 
+        <specs:serviceDescription> 
+            <specs:serviceResources> 
+                <specs:resourcesProvider id="am" name="amazon.es" zone="eu" description="">
+                </specs:resourcesProvider>
+            </specs:serviceResources>
+        </specs:serviceDescription>
+        
+        <specs:capabilities>
+            <specs:capability id="DATA_DELETION" name="Data Deletion" description="">
+                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+
+                    <specs:CCMsecurityControl name="Personal Data Access, Reversal, Rectification and Deletion" id="DSP-11" control_domain="DSP">
+                        <ccm:description>
+                            Define and implement, processes, procedures and technical measures to enable data subjects to request access to, modification, or deletion of their personal data, according to any applicable laws and regulations.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                    <specs:CCMsecurityControl name="Data Retention and Deletion" id="DSP-16" control_domain="DSP">
+                        <ccm:description>
+                            Data retention, archiving and deletion is managed in accordance with business requirements, applicable laws and regulations.
+                        </ccm:description>
+                        <ccm:importance_weight> </ccm:importance_weight>
+                    </specs:CCMsecurityControl>
+
+                </specs:controlFramework>
+            </specs:capability>
+            
+        </specs:capabilities>
+        
+        </wsag:ServiceDescriptionTerm>
+</wsag:AgreementOffer>
+ 

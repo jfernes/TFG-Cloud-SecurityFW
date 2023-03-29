@@ -1,4 +1,4 @@
-from difflib import restore
+from fileinput import filename
 from models import Contract, User, SSLA, Intent
 from werkzeug.security import generate_password_hash
 from os import remove
@@ -7,7 +7,7 @@ import mysql.connector
 import sys
 import xmltodict
 import json
-
+from sslagen import *
 
 def connectDB():
     connection = mysql.connector.connect(
@@ -31,7 +31,7 @@ def convertToBinaryData(filename):
         binaryData = file.read()
     return binaryData
 
-def processSSLA(sslaid, data):
+def processSSLA(sslaid, data, processsc):
     connection = connectDB()
     cursor = connection.cursor()
     
@@ -42,18 +42,15 @@ def processSSLA(sslaid, data):
         intentid = item["@id"]
         val = (intentid, sslaid, item["@name"], item["@description"])
         cursor.execute(sql, val)
-        #sys.stderr.write(str(item["specs:controlFramework"]["specs:CCMsecurityControl"]))
-        
-        if '@id' not in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
-            for elem in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
-                sys.stderr.write(str(elem["@id"]) + " " + str(elem["@name"]) + " " + str(elem["@control_domain"]) + " "
-                                + str(elem["ccm:description"]) + " " + intentid + '\n')
-                val2 = (elem["@id"], elem["@name"], elem["@control_domain"], elem["ccm:description"], intentid)
+        if processsc:
+            if '@id' not in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
+                for elem in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
+                    val2 = (elem["@id"], elem["@name"], elem["@control_domain"], elem["ccm:description"], intentid)
+                    cursor.execute(sqlsc, val2)
+            else:
+                item2 = item["specs:controlFramework"]["specs:CCMsecurityControl"]
+                val2 = (item2["@id"], item2["@name"], item2["@control_domain"], item2["ccm:description"], intentid)
                 cursor.execute(sqlsc, val2)
-        else:
-            item2 = item["specs:controlFramework"]["specs:CCMsecurityControl"]
-            val2 = (item2["@id"], item2["@name"], item2["@control_domain"], item2["ccm:description"], intentid)
-            cursor.execute(sqlsc, val2)
         
     connection.commit()
     connection.close()
@@ -99,7 +96,7 @@ def signup(email, password, name):
     else:
         return False
 
-def uploadSSLA(user_id, file, filename):
+def uploadSSLA(user_id, filename, processsc):
     with open(filename, 'rb') as fd:
         js = xmltodict.parse(fd.read())
         
@@ -128,7 +125,7 @@ def uploadSSLA(user_id, file, filename):
         connection.commit()
         connection.close()
         remove(filename)
-        processSSLA(sslaid, data)
+        processSSLA(sslaid, data, processsc)
         return True
     else:
         remove(filename)
@@ -309,5 +306,17 @@ def isAdmin(userid):
         return False
     return True
         
-        
-        
+def createSSLA(agreement_id, ssla_name, service_provider, expiration_time,
+        template_name, template_id, service_description_name,
+        service_name, resource_provider_id, resource_provider_name, 
+        resource_provider_zone, intents, userid):
+    xml = generateSSLA(agreement_id, ssla_name, service_provider, expiration_time,
+        template_name, template_id, service_description_name,
+        service_name, resource_provider_id, resource_provider_name, 
+        resource_provider_zone, intents)
+    filename = '/tmp/' + userid + '_' + agreement_id + ".xml"
+    
+    with open(filename, 'w') as f:
+        f.write(xml)
+    
+    return uploadSSLA(userid, filename, False)

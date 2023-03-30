@@ -27,7 +27,7 @@
         
         <specs:capabilities>
             <specs:capability id="DATA_DELETION" name="Data Deletion" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Personal Data Access, Reversal, Rectification and Deletion" id="DSP-11" control_domain="DSP">
                         <ccm:description>
@@ -47,7 +47,7 @@
             </specs:capability>
 
             <specs:capability id="DATA_ECNRYPTION" name="Data Encryption" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Data Encryption" id="CEK-03" control_domain="CEK">
                         <ccm:description>
@@ -67,7 +67,7 @@
             </specs:capability>
 
             <specs:capability id="DATA_LOCATION" name="Data Location" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Data Location" id="DSP-19" control_domain="DSP">
                         <ccm:description>
@@ -80,7 +80,7 @@
             </specs:capability>
 
             <specs:capability id="DATA_PORTABILITY" name="Data Portability" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Secure Interoperability and Portability Management" id="IPY-03" control_domain="IPY">
                         <ccm:description>
@@ -111,7 +111,7 @@
             </specs:capability>
 
             <specs:capability id="DATA_INTEGRITY" name="Data Integrity" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Storage Encryption" id="UEM-08" control_domain="UEM">
                         <ccm:description>
@@ -131,7 +131,7 @@
             </specs:capability>
 
             <specs:capability id="DATA_BACK-UP" name="Data Back-up" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Backup" id="BCR-08" control_domain="BCR">
                         <ccm:description>
@@ -143,8 +143,8 @@
                 </specs:controlFramework>
             </specs:capability>
 
-            <specs:capability id="APPLICATION LOCATION" name="Application Location" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+            <specs:capability id="APPLICATION_LOCATION" name="Application Location" description="">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Endpoint Inventory" id="UEM-04" control_domain="UEM">
                         <ccm:description>
@@ -164,7 +164,7 @@
             </specs:capability>
 
             <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Software Firewalls" id="UEM-10" control_domain="UEM">
                         <ccm:description>
@@ -177,7 +177,7 @@
             </specs:capability>
 
             <specs:capability id="APPLICATION_INTEGRITY" name="Application Integrity" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Application Security Baseline Requirements" id="AIS-02" control_domain="AIS">
                         <ccm:description>
@@ -197,7 +197,7 @@
             </specs:capability>
 
             <specs:capability id="NETWORK_ENCRYPTION" name="Network Encryption" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Network Security" id="IVS-03" control_domain="IVS">
                         <ccm:description>
@@ -210,7 +210,7 @@
             </specs:capability>
 
             <specs:capability id="AVAILABILITY" name="Availability" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Application Interface Availability" id="IPY-02" control_domain="IPY">
                         <ccm:description>
@@ -223,7 +223,7 @@
             </specs:capability>
 
             <specs:capability id="SECURE_DATA_MIGRATION" name="Secure Data and Virtual Machine Migration" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Migration to Cloud Environments" id="IVS-07" control_domain="IVS">
                         <ccm:description>
@@ -236,7 +236,7 @@
             </specs:capability>
 
             <specs:capability id="IDENTITY_AND_ACCESS_MANAGEMENT" name="Identity and Access Management" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Identity Inventory" id="IAM-03" control_domain="IAM">
                         <ccm:description>
@@ -305,7 +305,7 @@
             </specs:capability>
 
             <specs:capability id="KEY_MANAGEMENT" name="Key Management" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Roles and Responsabilities" id="CEK-02" control_domain="CEK">
                         <ccm:description>
@@ -374,7 +374,7 @@
             </specs:capability>
 
             <specs:capability id="LOGGING" name="Logging" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Log Protection" id="LOG-09" control_domain="LOG">
                         <ccm:description>
@@ -415,30 +415,30 @@
             </specs:capability>
 
             <specs:capability id="AUDITING" name="Auditing" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="Independent Assessments" id="A&amp;A-02" control_domain="A&amp;A">
+                    <specs:CCMsecurityControl name="Independent Assessments" id="AA-02" control_domain="AA">
                         <ccm:description>
                             Conduct independent audit and assurance assessments according to relevant standards at least annually. 
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="A&amp;A-03" control_domain="A&amp;A">
+                    <specs:CCMsecurityControl name="Risk Based Planning Assessment" id="AA-03" control_domain="AA">
                         <ccm:description>
                             Perform independent audit and assurance assessments according to risk-based plans and policies.  
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Audit Management Process" id="A&amp;A-05" control_domain="A&amp;A">
+                    <specs:CCMsecurityControl name="Audit Management Process" id="AA-05" control_domain="AA">
                         <ccm:description>
                             Define and implement an Audit Management process to support audit planning, risk analysis, security control assessment, conclusion, remediation schedules, report generation, and review of past reports and supporting evidence.
                         </ccm:description>
                         <ccm:importance_weight> </ccm:importance_weight>
                     </specs:CCMsecurityControl>
 
-                    <specs:CCMsecurityControl name="Remediation" id="A&amp;A-06" control_domain="A&amp;A">
+                    <specs:CCMsecurityControl name="Remediation" id="AA-06" control_domain="AA">
                         <ccm:description>
                             Establish, document, approve, communicate, apply, evaluate and maintain a risk-based corrective action plan to remediate audit findings, review and report remediation status to relevant stakeholders.       
                         </ccm:description>
@@ -449,7 +449,7 @@
             </specs:capability>
 
             <specs:capability id="CUSTOMER_PRIVACY" name="Customer Privacy" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Secure Disposal" id="DSP-02" control_domain="DSP">
                         <ccm:description>
@@ -476,7 +476,7 @@
             </specs:capability>
 
             <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Security Monitoring and Alerting" id="LOG-03" control_domain="LOG">
                         <ccm:description>
@@ -517,7 +517,7 @@
             </specs:capability>
 
             <specs:capability id="BREACH_REPORTING" name="Breach Reporting" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
                         <ccm:description>
@@ -544,7 +544,7 @@
             </specs:capability>
 
              <specs:capability id="RECOVERY" name="Recovery" description="">
-                <specs:controlFramework id="CCM_v4.0" framworkName="CCM Control Framework v4.0">
+                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Vulnerability Remediation Schedule" id="TVM-03" control_domain="TVM">
                         <ccm:description>

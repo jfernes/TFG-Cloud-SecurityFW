@@ -27,11 +27,12 @@ CREATE TABLE IF NOT EXISTS intent(
 );
 
 CREATE TABLE IF NOT EXISTS contract(
-    sslaid varchar(50),
+    contractid varchar(50),
     providerid varchar(50),
     consumerid varchar(50),
-    PRIMARY KEY (sslaid, providerid, consumerid),
-    FOREIGN KEY (sslaid) REFERENCES ssla(id) ON DELETE CASCADE,
+    filename TEXT,
+    data LONGBLOB,
+    PRIMARY KEY (contractid, providerid, consumerid),
     FOREIGN KEY (consumerid) REFERENCES user(email) ON DELETE CASCADE,
     FOREIGN KEY (providerid) REFERENCES user(email) ON DELETE CASCADE
 
@@ -56,4 +57,11 @@ CREATE TABLE IF NOT EXISTS admin(
 INSERT INTO user(email, name, password) VALUES("admin@um.es", "admin", "admin");
 
 INSERT INTO admin(id) VALUES ("admin@um.es");
+
+INSERT INTO user(email, name, password) VALUES("dsevilla@um.es", "admin", "admin");
+
+INSERT INTO user(email, name, password) VALUES("julian@um.es", "admin", "admin");
+
+
+
 

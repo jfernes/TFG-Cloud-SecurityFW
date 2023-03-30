@@ -1,4 +1,5 @@
 import os
+import ssl
 from flask import Flask, redirect, render_template, send_from_directory, url_for, request, send_file
 from flask_login import LoginManager, login_manager, current_user, login_user, login_required, logout_user
 from forms import *
@@ -190,23 +191,31 @@ def negotiate():
     if request.method == 'POST':
         providers = getProvidersByIntents(request.form.getlist("id"))
         is_providers = False
-        sys.stderr.write(str(providers))
         if(len(providers) > 0):
             is_providers = True
         return render_template("providers.html", providers=providers, is_providers=is_providers)
     
     return render_template("negotiate.html", intents=intents, is_intents=is_intents)
 
-@app.route("/ssla/contract/<sslaid>/<providerid>")
+@app.route("/ssla/contract/intents/<sslaid>", methods=['GET','POST'])
 @login_required
-def contract(sslaid, providerid):
-    error = None
-    created = createContract(sslaid, providerid, current_user.id)
-    if created:
-        return redirect(url_for("manage_contracts"))
-    else:
-        error = "Could not create the contract."
-    return render_template("providers.html", error=error)
+def selectIntents(sslaid):
+    data = getSSLA(sslaid)
+    intents = getIntentsBySSLA(sslaid)
+    ssla = getObjectSSLA(sslaid)
+    providerid = ssla.userid
+    is_intents = False
+    if(len(intents) > 0):
+            is_intents = True
+    is_data = False
+    if data != None:
+        is_data = True
+    if request.method == 'POST':
+        ints = request.form.getlist("id")
+        generated = genContractSSLA(sslaid, current_user.id, providerid, ints, data)
+        if generated:
+            return redirect(url_for("manage_contracts"))
+    return render_template("contract-intents.html", intents=intents, data=data, ssla=ssla, is_intents=is_intents, is_data=is_data)
         
 @app.route("/contracts")
 @login_required
@@ -216,6 +225,30 @@ def manage_contracts():
     if (len(contracts) > 0):
         is_contract = True
     return render_template("contracts.html", contracts=contracts, is_contract=is_contract)
+
+@app.route("/contract/<id>")
+@login_required
+def detailsContract(id):
+    data = getContract(id)
+    is_data = False
+    if data != None:
+        is_data = True
+    return render_template("details.html", data=data, is_data=is_data)
+
+
+@app.route("/contract/download/<id>")
+@login_required
+def downloadContract(id):
+    file = downloadContractfromDB(id)
+    return send_file(file, as_attachment=True)
+    
+
+
+@app.route("/contract/json/<id>")
+@login_required
+def viewContractJSON(id):
+    data = json.dumps(getContract(id), indent=4)
+    return render_template("json.html", data=data)
 
  
 @login_manager.user_loader

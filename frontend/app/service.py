@@ -1,4 +1,5 @@
 from fileinput import filename
+import uuid
 from models import Contract, User, SSLA, Intent
 from werkzeug.security import generate_password_hash
 from os import remove
@@ -201,6 +202,21 @@ def getSSLA(sslaid):
         
     return None
 
+def getObjectSSLA(sslaid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT id, filename, data, userid FROM ssla 
+                WHERE id = '{}'""".format(sslaid)
+    
+    cursor.execute(sql)
+    result = cursor.fetchone()
+    if result != None:
+        ssla = SSLA(result[0], result[1], result[2], result[3])
+        return ssla
+    return None
+
+
 def getIntents():
     intents = []
     connection = connectDB()
@@ -259,20 +275,20 @@ def getProvidersByIntents(intents):
             
     return providers
 
-def createContract(sslaid, providerid, consumerid):
+def createContract(contractid, providerid, consumerid, filename, data):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT sslaid, providerid, consumerid FROM contract
-            WHERE sslaid = %s and providerid = %s and consumerid = %s"""
-    val = (sslaid, providerid, consumerid)
+    sql = """SELECT contractid, providerid, consumerid FROM contract
+            WHERE contractid = %s and providerid = %s and consumerid = %s"""
+    val = (contractid, providerid, consumerid)
     
     cursor.execute(sql,val)
     result = cursor.fetchone()
     
     if result == None:
-        sql = "INSERT INTO contract(sslaid, providerid, consumerid) VALUES (%s, %s, %s)"
-        val = (sslaid, providerid, consumerid)
+        sql = "INSERT INTO contract(contractid, providerid, consumerid, filename, data) VALUES (%s, %s, %s, %s, %s)"
+        val = (contractid, providerid, consumerid, filename, data)
         cursor.execute(sql, val)
         connection.commit()
         connection.close()
@@ -285,12 +301,12 @@ def getContracts(consumerid):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT sslaid, providerid, consumerid FROM contract WHERE
+    sql = """SELECT contractid, providerid, consumerid, filename, data FROM contract WHERE
             consumerid = '{}'""".format(consumerid)
     cursor.execute(sql)
     result = cursor.fetchall()
     for elem in result:
-        contract = Contract(elem[0], elem[1], elem[2])
+        contract = Contract(elem[0], elem[1], elem[2], elem[3], elem[4])
         contracts.append(contract)
     return contracts
 
@@ -320,3 +336,71 @@ def createSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         f.write(xml)
     
     return uploadSSLA(userid, filename, False)
+
+def genContractSSLA(sslaid, customerid, providerid, intents, data):
+    agid = data["wsag:AgreementOffer"]["@wsag:AgreementId"]
+    sslaname = data["wsag:AgreementOffer"]["wsag:Name"]
+    sp = data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ServiceProvider"]
+    exptime = data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ExpirationTime"]
+    tempname = data["wsag:AgreementOffer"]["wsag:Context"]["wsag:TemplateName"]
+    tempid = data["wsag:AgreementOffer"]["wsag:Context"]["wsag:TemplateId"]
+    sdname = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:Name"]
+    sdservicename = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:ServiceName"]
+    rpid = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@id"]
+    rpname = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@name"]
+    rpzone = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@zone"]
+    
+    xml = generateSSLA(agid, sslaname, sp, exptime, tempname, tempid, sdname,
+                       sdservicename, rpid, rpname, rpzone, intents)
+    
+    contractid = str(uuid.uuid4())
+    filename = "/tmp/"+ contractid + ".xml"
+    
+    with open(filename, 'w') as f:
+        f.write(xml)    
+    bd = convertToBinaryData(filename)
+    return createContract(contractid, providerid, customerid, filename, bd)
+    
+    
+def getContract(contractid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT contractid, providerid, consumerid, filename, data FROM contract 
+                WHERE contractid = '{}'""".format(contractid)
+    
+    cursor.execute(sql)
+    result = cursor.fetchone()
+    
+    if result != None:
+        contract = Contract(result[0], result[1], result[2], result[3], result[4])
+        with open(contract.filename, 'wb') as fd:   # binary mode
+            fd.write(contract.data)
+            
+        with open(contract.filename, 'rb') as fd:
+            js = xmltodict.parse(fd.read())
+        
+        jsond = json.dumps(js, indent=4)
+        data = json.loads(jsond)
+        return data      
+        
+    return None
+    
+def downloadContractfromDB(contractid):
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    sql = """SELECT contractid, providerid, consumerid, filename, data FROM contract 
+                WHERE contractid = '{}'""".format(contractid)
+    
+    cursor.execute(sql)
+    result = cursor.fetchone()
+    
+    if result != None:
+        contract = Contract(result[0], result[1], result[2], result[3], result[4])
+        with open(contract.filename, 'wb') as file:
+            file.write(contract.data)
+        return contract.filename
+    return None
+    
+    

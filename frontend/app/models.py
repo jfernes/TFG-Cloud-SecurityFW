@@ -1,3 +1,4 @@
+from fileinput import filename
 from werkzeug.security import check_password_hash
 from flask_login import UserMixin
 
@@ -34,7 +35,9 @@ class Intent():
         self.description = description
         
 class Contract():
-    def __init__(self, sslaid, providerid, consumerid):
-        self.sslaid = sslaid
+    def __init__(self, contractid, providerid, consumerid, filename, data):
+        self.contractid = contractid
         self.providerid = providerid
         self.consumerid = consumerid
+        self.filename = filename
+        self.data = data

@@ -68,6 +68,7 @@ def connectDB():
 )
     return connection
 
+
 def generateSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         template_name, template_id, service_description_name,
         service_name, resource_provider_id, resource_provider_name, 

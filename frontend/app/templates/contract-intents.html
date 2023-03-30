@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+{% block content %}
+
+{% if is_data %}
+
+    <div class="starter-template">
+      <div class="container p-3 my-3 border">
+        <h1> {{data["wsag:AgreementOffer"]["@wsag:AgreementId"]}}</h1>
+          
+        
+          <h2>Context</h3>
+        
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Name"]}} </h5>
+          <h5 class="text-info-emphasis">Service Provider: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ServiceProvider"]}} </h5>
+          <h5 class="text-info-emphasis">Expiration Time: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:ExpirationTime"]}} </h5>
+          <h5 class="text-info-emphasis">Template Name: </h5>
+          <h5>&emsp; {{data["wsag:AgreementOffer"]["wsag:Context"]["wsag:TemplateName"]}} </h5>
+
+        
+          <h2 class="mt-5">Service Description</h3>
+        
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5> &emsp; {{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:Name"]}} </h5>
+          <h5 class="text-info-emphasis">Service Name: </h5>
+          <h5> &emsp; {{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["@wsag:ServiceName"]}} </h5>
+
+        
+          <h2 class="mt-5">Resources Provider</h4>
+        
+          <h5 class="text-info-emphasis">ID: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@id"]}} </h5>
+          <h5 class="text-info-emphasis">Name: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@name"]}} </h5>
+          <h5 class="text-info-emphasis">Zone: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@zone"]}} </h5>
+          <h5 class="text-info-emphasis">Description: </h5>
+          <h5> &emsp;{{data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@description"]}} </h5>
+
+        </div>
+    </div>
+    
+
+<div class="container-fluid">
+    <h1>
+        Select your Security Intents
+    </h1>
+
+    {% if is_intents %}
+    <form method='POST' action="{{"/ssla/contract/intents/"+ ssla.id}}">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Intent ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        {% for intent in intents %}
+        <tr>   
+            <td>{{ intent.id }}</td>
+            <td>{{ intent.name }}</td>
+            <td>{{ intent.description }}</td>
+            <td>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="id" value="{{intent.id}}" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Add to SSLA</label>
+                  </div>
+            </td>
+        </tr>
+        {% endfor %}
+        <button type="button submit"
+                      class="btn btn-danger btn-block btn-lg gradient-custom-4 text-body">Contract</button>
+       <!-- <a href="{{"/ssla/contract/intents/"+ ssla.userid + "/" + ssla.id}}" class="btn btn-danger">Contract</a> -->
+    </form>
+    </table>
+    {% else %}
+        <h1>There are no Intents registered</h1>
+
+    {% endif %}
+    
+    
+</div>
+{% endif %}
+
+{% endblock %}

@@ -11,7 +11,7 @@
     <table class="table table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>SSLA ID</th>
+            <th>Contract ID</th>
             <th>Provider ID</th>
             <th>Consumer ID</th>
             <th>Actions</th>
@@ -19,13 +19,13 @@
         </thead>
         {% for contract in contracts %}
         <tr>   
-            <td>{{ contract.sslaid }}</td>
+            <td>{{ contract.contractid }}</td>
             <td>{{ contract.providerid }}</td>
             <td>{{ contract.consumerid}}</td>
             <td>
-                <a class="btn btn-primary" href="{{"/ssla/"+contract.sslaid}}">Details</a>
-                <a href="{{"/ssla/json/"+contract.sslaid}}" class="btn btn-success">View JSON</a>
-                <a href="{{"/ssla/download/"+contract.sslaid}}" class="btn btn-warning">Download</a>
+                <a class="btn btn-primary" href="{{"/contract/"+contract.contractid}}">Details</a>
+                <a href="{{"/contract/json/"+contract.contractid}}" class="btn btn-success">View JSON</a>
+                <a href="{{"/contract/download/"+contract.contractid}}" class="btn btn-warning">Download</a>
             </td>
         </tr>
         {% endfor %}

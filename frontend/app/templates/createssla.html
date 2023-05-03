@@ -75,6 +75,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Actions</th>
+            <th>Technology</th>
         </tr>
         </thead>
         {% for intent in intents %}
@@ -88,6 +89,7 @@
                     <label class="form-check-label" for="flexSwitchCheckDefault">Add to SSLA</label>
                   </div>
             </td>
+            <td> <input type="text" id="text-field_{{intent.id}}" name="text-field_{{intent.id}}"> </td>
         </tr>
         {% endfor %}
         <button type="button submit" class="btn btn-secondary">Next</button>

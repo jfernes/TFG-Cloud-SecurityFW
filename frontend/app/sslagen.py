@@ -46,6 +46,9 @@ capability = """
                     {}
 
                 </specs:controlFramework>
+                <technology>
+                    {}
+                </technology>
             </specs:capability>
 
 """
@@ -72,7 +75,7 @@ def connectDB():
 def generateSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         template_name, template_id, service_description_name,
         service_name, resource_provider_id, resource_provider_name, 
-        resource_provider_zone, intents):
+        resource_provider_zone, intents, techs):
     
     connection = connectDB()
     cursor = connection.cursor(buffered=True)
@@ -92,7 +95,7 @@ def generateSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         
         cursor.execute(sql.format(intent))
         result = cursor.fetchone()
-        cap = cap + capability.format(result[0], result[1], result[2], sc)
+        cap = cap + capability.format(result[0], result[1], result[2], sc, techs[intent])
         
         
     genxml = xml.format(agreement_id, ssla_name, service_provider, expiration_time, template_name, template_id, service_description_name, service_name,

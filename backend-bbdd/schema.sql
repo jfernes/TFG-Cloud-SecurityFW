@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS intent(
     sslaid varchar(50),
     name TEXT,
     description TEXT,
+    technology TEXT,
     PRIMARY KEY (id, sslaid),
     FOREIGN KEY (sslaid) REFERENCES ssla(id) ON DELETE CASCADE
 );

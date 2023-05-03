@@ -129,11 +129,16 @@ def create_ssla():
         resource_provider_zone = request.form['resource_provider_zone']
         
         ints = request.form.getlist("id")
+        techs = {}
+        for int in ints:
+            text_name = "text-field_" + str(int)
+            techs[int] = request.form.get(text_name)
+            
         
         created = createSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         template_name, template_id, service_description_name,
         service_name, resource_provider_id, resource_provider_name, 
-        resource_provider_zone, ints, current_user.id)
+        resource_provider_zone, ints, techs, current_user.id)
         
         if created:
             pass

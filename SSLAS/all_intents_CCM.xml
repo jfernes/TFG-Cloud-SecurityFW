@@ -44,6 +44,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="DATA_ECNRYPTION" name="Data Encryption" description="">
@@ -64,6 +66,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="DATA_LOCATION" name="Data Location" description="">
@@ -77,6 +81,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="DATA_PORTABILITY" name="Data Portability" description="">
@@ -108,6 +114,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="DATA_INTEGRITY" name="Data Integrity" description="">
@@ -128,6 +136,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="DATA_BACK-UP" name="Data Back-up" description="">
@@ -141,6 +151,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="APPLICATION_LOCATION" name="Application Location" description="">
@@ -161,6 +173,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="">
@@ -174,6 +188,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="APPLICATION_INTEGRITY" name="Application Integrity" description="">
@@ -194,6 +210,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="NETWORK_ENCRYPTION" name="Network Encryption" description="">
@@ -207,6 +225,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="AVAILABILITY" name="Availability" description="">
@@ -220,6 +240,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="SECURE_DATA_MIGRATION" name="Secure Data and Virtual Machine Migration" description="">
@@ -233,6 +255,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="IDENTITY_AND_ACCESS_MANAGEMENT" name="Identity and Access Management" description="">
@@ -302,6 +326,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="KEY_MANAGEMENT" name="Key Management" description="">
@@ -371,6 +397,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="LOGGING" name="Logging" description="">
@@ -412,6 +440,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="AUDITING" name="Auditing" description="">
@@ -446,6 +476,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="CUSTOMER_PRIVACY" name="Customer Privacy" description="">
@@ -473,6 +505,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="">
@@ -514,6 +548,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
             <specs:capability id="BREACH_REPORTING" name="Breach Reporting" description="">
@@ -541,6 +577,8 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
 
              <specs:capability id="RECOVERY" name="Recovery" description="">
@@ -561,42 +599,10 @@
                     </specs:CCMsecurityControl>
 
                 </specs:controlFramework>
+                <technology>
+                </technology>
             </specs:capability>
         
         </specs:capabilities>
-
-        <specs:security_metrics> 
-
-            <specs:Metric name="" referenceId="">
-                <specs:MetricDefinition> 
-                    <specs:unit name="">
-                        <specs:intervalUnit>
-
-                        </specs:intervalUnit>
-                    </specs:unit>
-                    <specs:scale>
-                        <specs:Quantitative> </specs:Quantitative>
-                    </specs:scale>
-                    <specs:expression> </specs:expression>
-                    <specs:definition> </specs:definition>
-                    <specs:note> </specs:note>
-                </specs:MetricDefinition>
-            </specs:Metric>
-
-        </specs:security_metrics>
-
-        <wsag:ServiceProperties wsag:Name="" wsag:ServiceName="">
-            <wsag:VariableSet>
-                <wsag:Variable wsag:Name="" wsag:Metric="">
-                    <wsag:Location> </wsag:Location>
-                </wsag:Variable>
-                <wsag:Variable wsag:Name="" wsag:Metric="">
-                    <wsag:Location> </wsag:Location>
-                </wsag:Variable>
-                <wsag:Variable wsag:Name="" wsag:Metric="">
-                    <wsag:Location> </wsag:Location>
-                </wsag:Variable>
-            </wsag:VariableSet>
-        </wsag:ServiceProperties>
     </wsag:ServiceDescriptionTerm>
 </wsag:AgreementOffer>

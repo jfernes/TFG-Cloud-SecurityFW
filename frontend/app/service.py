@@ -36,12 +36,14 @@ def processSSLA(sslaid, data, processsc):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = "INSERT INTO intent(id, sslaid, name, description) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO intent(id, sslaid, name, description, technology) VALUES (%s, %s, %s, %s, %s)"
     sqlsc = "INSERT INTO seccontrol(id, name, control_domain, description, intentid) VALUES(%s, %s, %s, %s, %s)"
+    
+    
     
     for item in data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:capabilities"]["specs:capability"]:
         intentid = item["@id"]
-        val = (intentid, sslaid, item["@name"], item["@description"])
+        val = (intentid, sslaid, item["@name"], item["@description"], item["technology"])
         cursor.execute(sql, val)
         if processsc:
             if '@id' not in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
@@ -52,6 +54,8 @@ def processSSLA(sslaid, data, processsc):
                 item2 = item["specs:controlFramework"]["specs:CCMsecurityControl"]
                 val2 = (item2["@id"], item2["@name"], item2["@control_domain"], item2["ccm:description"], intentid)
                 cursor.execute(sqlsc, val2)
+                
+    
         
     connection.commit()
     connection.close()
@@ -325,11 +329,11 @@ def isAdmin(userid):
 def createSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         template_name, template_id, service_description_name,
         service_name, resource_provider_id, resource_provider_name, 
-        resource_provider_zone, intents, userid):
+        resource_provider_zone, intents, techs, userid):
     xml = generateSSLA(agreement_id, ssla_name, service_provider, expiration_time,
         template_name, template_id, service_description_name,
         service_name, resource_provider_id, resource_provider_name, 
-        resource_provider_zone, intents)
+        resource_provider_zone, intents, techs)
     filename = '/tmp/' + userid + '_' + agreement_id + ".xml"
     
     with open(filename, 'w') as f:
@@ -350,8 +354,22 @@ def genContractSSLA(sslaid, customerid, providerid, intents, data):
     rpname = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@name"]
     rpzone = data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:serviceDescription"]["specs:serviceResources"]["specs:resourcesProvider"]["@zone"]
     
+    connection = connectDB()
+    cursor = connection.cursor()
+    
+    techs = {}
+    
+    for int in intents:
+        sqlt = "SELECT technology FROM intent WHERE id = %s and sslaid = %s"
+        val = (int, sslaid)
+        cursor.execute(sqlt, val)
+        result = cursor.fetchone()
+        techs[int] = result[0]
+        
+    sys.stderr.write(str(techs))
+    
     xml = generateSSLA(agid, sslaname, sp, exptime, tempname, tempid, sdname,
-                       sdservicename, rpid, rpname, rpzone, intents)
+                       sdservicename, rpid, rpname, rpzone, intents, techs)
     
     contractid = str(uuid.uuid4())
     filename = "/tmp/"+ contractid + ".xml"

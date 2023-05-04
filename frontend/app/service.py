@@ -9,6 +9,7 @@ import sys
 import xmltodict
 import json
 from sslagen import *
+from evaluator import *
 
 def connectDB():
     connection = mysql.connector.connect(
@@ -39,11 +40,12 @@ def processSSLA(sslaid, data, processsc):
     sql = "INSERT INTO intent(id, sslaid, name, description, technology) VALUES (%s, %s, %s, %s, %s)"
     sqlsc = "INSERT INTO seccontrol(id, name, control_domain, description, intentid) VALUES(%s, %s, %s, %s, %s)"
     
-    
+    techs = []
     
     for item in data["wsag:AgreementOffer"]["wsag:ServiceDescriptionTerm"]["specs:capabilities"]["specs:capability"]:
         intentid = item["@id"]
         val = (intentid, sslaid, item["@name"], item["@description"], item["technology"])
+        techs.append(item["technology"])
         cursor.execute(sql, val)
         if processsc:
             if '@id' not in item["specs:controlFramework"]["specs:CCMsecurityControl"]:
@@ -55,6 +57,21 @@ def processSSLA(sslaid, data, processsc):
                 val2 = (item2["@id"], item2["@name"], item2["@control_domain"], item2["ccm:description"], intentid)
                 cursor.execute(sqlsc, val2)
                 
+    if not processsc:
+        techsclean = []
+        for tech in techs:
+            if tech not in techsclean:
+                techsclean.append(tech)
+            
+        sys.stderr.write(str(techsclean))
+        trust = getCVSS(techsclean)
+        sqlupdt = "UPDATE ssla SET trust = %s WHERE id = %s"
+        val =(trust, sslaid)
+    
+        sys.stderr.write(str(trust) + ' ' + str(sslaid))
+        
+        cursor.execute(sqlupdt, val)
+        
     
         
     connection.commit()
@@ -123,8 +140,8 @@ def uploadSSLA(user_id, filename, processsc):
 
     # Comprobar resultado. Si no se encuentra, registrar.
     if result == None:
-        sql = """INSERT INTO ssla(id, filename, data, userid) VALUES (%s, %s, %s, %s)"""
-        val = (sslaid, filename, bd, user_id) #TO DO poner un campo al usuario para definir el id
+        sql = """INSERT INTO ssla(id, filename, data, userid, trust) VALUES (%s, %s, %s, %s, %s)"""
+        val = (sslaid, filename, bd, user_id, 0) #TO DO poner un campo al usuario para definir el id
         
         cursor.execute(sql, val)
         connection.commit()
@@ -154,13 +171,13 @@ def getSSLAS(userid):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT id, filename, data, userid FROM ssla 
+    sql = """SELECT id, filename, data, userid, trust FROM ssla 
                 WHERE userid = '{}'""".format(userid)
     
     cursor.execute(sql)
     result = cursor.fetchall()
     for elem in result:
-        ssla = SSLA(elem[0], elem[1], elem[2], elem[3])
+        ssla = SSLA(elem[0], elem[1], elem[2], elem[3], elem[4])
         sslas.append(ssla)
     
     return sslas
@@ -186,14 +203,14 @@ def getSSLA(sslaid):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT id, filename, data, userid FROM ssla 
+    sql = """SELECT id, filename, data, userid, trust FROM ssla 
                 WHERE id = '{}'""".format(sslaid)
     
     cursor.execute(sql)
     result = cursor.fetchone()
     
     if result != None:
-        ssla = SSLA(result[0], result[1], result[2], result[3])
+        ssla = SSLA(result[0], result[1], result[2], result[3], result[4])
         with open(ssla.filename, 'wb') as fd:   # binary mode
             fd.write(ssla.data)
             
@@ -210,13 +227,13 @@ def getObjectSSLA(sslaid):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT id, filename, data, userid FROM ssla 
+    sql = """SELECT id, filename, data, userid, trust FROM ssla 
                 WHERE id = '{}'""".format(sslaid)
     
     cursor.execute(sql)
     result = cursor.fetchone()
     if result != None:
-        ssla = SSLA(result[0], result[1], result[2], result[3])
+        ssla = SSLA(result[0], result[1], result[2], result[3], result[4])
         return ssla
     return None
 
@@ -256,12 +273,12 @@ def getProvidersByIntents(intents):
     connection = connectDB()
     cursor = connection.cursor()
     
-    sql = """SELECT id, filename, data, userid FROM ssla"""
+    sql = """SELECT id, filename, data, userid, trust FROM ssla"""
     
     cursor.execute(sql)
     result = cursor.fetchall()
     for elem in result:
-        ssla = SSLA(elem[0], elem[1], elem[2], elem[3])
+        ssla = SSLA(elem[0], elem[1], elem[2], elem[3], elem[4])
         sslas.append(ssla)
         
     connection.close()

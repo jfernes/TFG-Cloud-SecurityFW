@@ -1,11 +1,14 @@
 import json
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+import sys
 
 lw = 0.05
 mw = 0.15
 hw = 0.30
 cw = 0.5
+#apikey = '8d10e22cb16454217a4f6fb5f7036618' #Joaquin
+apikey = 'cfe941edfc9a1663c0071715fb9dbf8d' #Julian
 
 def evaluate(cvss):
     #todos los cvss encontrados de todas las vulnerabilidades
@@ -18,18 +21,18 @@ def evaluate(cvss):
     crit = 0.0
     ncrit = 0
     for i in cvss:
-        if 0.0 <= i <= 3.9:
+        if 0.0 <= float(i) <= 3.9:
             nlow += 1
-            low += i
-        elif 4.0 <= i <= 6.9:
+            low += float(i)
+        elif 4.0 <= float(i) <= 6.9:
             nmed += 1
-            med += i
-        elif 7.0 <= i <= 8.9:
+            med += float(i)
+        elif 7.0 <= float(i) <= 8.9:
             nhigh += 1
-            high += i
-        elif 9.0 <= i <= 10:
+            high += float(i)
+        elif 9.0 <= float(i) <= 10:
             ncrit += 1
-            crit += i
+            crit += float(i)
     low = ((low/nlow) - 0)/(3.9 - 0) if nlow != 0 else 0
     med = ((med/nmed) - 4.0)/(6.9 - 4.0) if nmed != 0 else 0
     high = ((high/nhigh) - 7.0)/(8.9 - 7.0) if nhigh != 0 else 0
@@ -50,6 +53,7 @@ def evaluate(cvss):
         trustv = 1
 
     trustv = 1 - trustv
+    sys.stderr.write('\n\n\n' +  str(trustv) + '\n\n\n')
     return trustv
 
 
@@ -59,23 +63,26 @@ def getCVSS(techs):
         ids = []
         
         url = 'https://vuldb.com/?api'  # url endpoint
-        post_fields = {'apikey': 'cfe941edfc9a1663c0071715fb9dbf8d', 'search': tech}  # request
+        post_fields = {'apikey': apikey, 'search': tech}  # request
 
         request = Request(url, urlencode(post_fields).encode())
         json_string = urlopen(request).read().decode()
         data = json.loads(json_string)
+        sys.stderr.write(str(data) + '\n')
         for i in data['result']:
             ids.append(i['entry']['id'])
         print(ids)
 
         for id in ids:
-            post_fields = {'apikey': 'cfe941edfc9a1663c0071715fb9dbf8d', 'id': id, 'fields': 'vulnerability_cvss2_vuldb_basescore'}
+            post_fields = {'apikey': apikey, 'id': id, 'fields': 'vulnerability_cvss2_vuldb_basescore'}
             request = Request(url, urlencode(post_fields).encode())
             json_string = urlopen(request).read().decode()
             data = json.loads(json_string)
+            sys.stderr.write(str(data)+ '\n')
             for i in data['result']:
                 v = i['vulnerability']['cvss2']['vuldb']['basescore']
                 cvss.append(v)
-
-    cvss.remove('0.0')
+                
+    if 0.0 in cvss:
+        cvss.remove('0.0')
     return evaluate(cvss)

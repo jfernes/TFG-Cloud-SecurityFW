@@ -21,11 +21,12 @@ class User(UserMixin):
   
 
 class SSLA():
-    def __init__(self, id, filename, data, userid):
+    def __init__(self, id, filename, data, userid, trust):
         self.id = id
         self.filename = filename
         self.data = data 
         self.userid = userid
+        self.trust = trust
         
 class Intent():
     def __init__(self, id, sslaid, name, description):

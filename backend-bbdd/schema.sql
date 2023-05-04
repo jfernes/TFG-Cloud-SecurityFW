@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS ssla(
     filename TEXT,
     data LONGBLOB,
     userid varchar(50),
+    trust FLOAT,
     PRIMARY KEY(id),
     FOREIGN KEY(userid) REFERENCES user(email)
 );

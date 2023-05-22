@@ -193,7 +193,7 @@ def downloadSSLAfromDB(sslaid):
     result = cursor.fetchone()
     
     if result != None:
-        ssla = SSLA(result[0], result[1], result[2], result[3])
+        ssla = SSLA(result[0], result[1], result[2], result[3], 0)
         with open(ssla.filename, 'wb') as file:
             file.write(ssla.data)
         return ssla.filename

@@ -4,11 +4,11 @@
 
 <div class="container-fluid">
     <h1>
-        Your SSLA
+        Your SSLAs
     </h1>
 
     {% if is_ssla %}
-    <table class="table table-striped">
+    <table class="table table-borderless">
         <thead class="thead-dark">
         <tr>
             <th>SSLA ID</th>
@@ -16,6 +16,7 @@
             <th>Actions</th>
         </tr>
         </thead>
+        <tbody>
         {% for ssla in sslas %}
         <tr>   
             <td>{{ ssla.id }}</td>
@@ -28,6 +29,7 @@
             </td>
         </tr>
         {% endfor %}
+        <tbody>
     </table>
     {% else %}
         <h1>There are no SSLAs right now</h1>

@@ -17,7 +17,7 @@
         <wsag:TemplateId> TO_DO </wsag:TemplateId>
     </wsag:Context>
     
-    <wsag:ServiceDescriptionTerm wsag:Name="SECURE_6G_EDGE" wsag:ServiceName="SECURE_6G_EDGE">
+    <wsag:ServiceDescriptionTerm wsag:Name="demo" wsag:ServiceName="demo">
         <specs:serviceDescription>
             <specs:serviceResources>
                 <specs:resourcesProvider id="am" name="amazon.es" zone="eu" description="">
@@ -26,29 +26,8 @@
         </specs:serviceDescription>
         
         <specs:capabilities>
-            <specs:capability id="DATA_DELETION" name="Data Deletion" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
-                    <specs:CCMsecurityControl name="Personal Data Access, Reversal, Rectification and Deletion" id="DSP-11" control_domain="DSP">
-                        <ccm:description>
-                            Define and implement, processes, procedures and technical measures to enable data subjects to request access to, modification, or deletion of their personal data, according to any applicable laws and regulations.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Data Retention and Deletion" id="DSP-16" control_domain="DSP">
-                        <ccm:description>
-                            Data retention, archiving and deletion is managed in accordance with business requirements, applicable laws and regulations.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="DATA_ECNRYPTION" name="Data Encryption" description="">
+            <specs:capability id="DATA_ECNRYPTION" name="Data Encryption" description="Guarantee that the information remains confidential">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Data Encryption" id="CEK-03" control_domain="CEK">
@@ -70,55 +49,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="DATA_LOCATION" name="Data Location" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
-
-                    <specs:CCMsecurityControl name="Data Location" id="DSP-19" control_domain="DSP">
-                        <ccm:description>
-                            Define and implement, processes, procedures and technical measures to specify and document the physical locations of data, including any locations in which data is processed or backed up.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="DATA_PORTABILITY" name="Data Portability" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
-
-                    <specs:CCMsecurityControl name="Secure Interoperability and Portability Management" id="IPY-03" control_domain="IPY">
-                        <ccm:description>
-                            Implement cryptographically secure and standardized network protocols for the management, import and export of data.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Data Portability Contractual Obligations" id="IPY-04" control_domain="IPY">
-                        <ccm:description>
-                            Agreements must include provisions specifying CSCs access to data upon contract termination and will include:
-                            a. Data format
-                            b. Length of time the data will be stored
-                            c. Scope of the data retained and made available to the CSCs
-                            d. Data deletion policy
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Sensitive Data Transfer" id="DSP-10" control_domain="DSP">
-                        <ccm:description>
-                            Define, implement and evaluate processes, procedures and technical measures that ensure any transfer of personal or sensitive data is protected from unauthorized access and only processed within scope as permitted by the respective laws and regulations.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="DATA_INTEGRITY" name="Data Integrity" description="">
+            <specs:capability id="DATA_INTEGRITY" name="Data Integrity" description="Ensure that the information integrity is protected">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Storage Encryption" id="UEM-08" control_domain="UEM">
@@ -140,7 +71,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="DATA_BACK-UP" name="Data Back-up" description="">
+            <specs:capability id="DATA_BACK-UP" name="Data Back-up" description="Assure that the data can be brought back if necessary">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Backup" id="BCR-08" control_domain="BCR">
@@ -155,29 +86,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="APPLICATION_LOCATION" name="Application Location" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
-
-                    <specs:CCMsecurityControl name="Endpoint Inventory" id="UEM-04" control_domain="UEM">
-                        <ccm:description>
-                            Maintain an inventory of all endpoints used to store and access company data.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Endpoint Management" id="UEM-05" control_domain="UEM">
-                        <ccm:description>
-                            Define, implement and evaluate processes, procedures and technical measures to enforce policies and controls for all endpoints permitted to access systems and/or store, transmit, or process organizational data.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="">
+            <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="Protect the resources from outsiders">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Software Firewalls" id="UEM-10" control_domain="UEM">
@@ -192,7 +101,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="APPLICATION_INTEGRITY" name="Application Integrity" description="">
+            <specs:capability id="APPLICATION_INTEGRITY" name="Application Integrity" description="Keep the application integrity protected">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Application Security Baseline Requirements" id="AIS-02" control_domain="AIS">
@@ -214,7 +123,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="NETWORK_ENCRYPTION" name="Network Encryption" description="">
+            <specs:capability id="NETWORK_ENCRYPTION" name="Network Encryption" description="Guarantee that traffic is properly protected">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Network Security" id="IVS-03" control_domain="IVS">
@@ -229,7 +138,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="AVAILABILITY" name="Availability" description="">
+            <specs:capability id="AVAILABILITY" name="Availability" description="Keep the service running as long as possible">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Application Interface Availability" id="IPY-02" control_domain="IPY">
@@ -244,22 +153,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="SECURE_DATA_MIGRATION" name="Secure Data and Virtual Machine Migration" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
-
-                    <specs:CCMsecurityControl name="Migration to Cloud Environments" id="IVS-07" control_domain="IVS">
-                        <ccm:description>
-                            Use secure and encrypted communication channels when migrating servers, services, applications, or data to cloud environments. Such channels must include only up-to-date and approved protocols.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="IDENTITY_AND_ACCESS_MANAGEMENT" name="Identity and Access Management" description="">
+            <specs:capability id="IDENTITY_AND_ACCESS_MANAGEMENT" name="Identity and Access Management" description="Protect the information from outsider and insider unauthorized access">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Identity Inventory" id="IAM-03" control_domain="IAM">
@@ -330,7 +224,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="KEY_MANAGEMENT" name="Key Management" description="">
+            <specs:capability id="KEY_MANAGEMENT" name="Key Management" description="Ensure that keys are not compromised">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Roles and Responsabilities" id="CEK-02" control_domain="CEK">
@@ -401,7 +295,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="LOGGING" name="Logging" description="">
+            <specs:capability id="LOGGING" name="Logging" description="Keeps a log with the events registered during the processes">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Log Protection" id="LOG-09" control_domain="LOG">
@@ -444,7 +338,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="AUDITING" name="Auditing" description="">
+            <specs:capability id="AUDITING" name="Auditing" description="Competency of beeing audited by third parties">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Independent Assessments" id="AA-02" control_domain="AA">
@@ -480,36 +374,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="CUSTOMER_PRIVACY" name="Customer Privacy" description="">
-                <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
-
-                    <specs:CCMsecurityControl name="Secure Disposal" id="DSP-02" control_domain="DSP">
-                        <ccm:description>
-                            Apply industry accepted methods for the secure disposal of data from storage media such that data is not recoverable by any forensic means.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Data classification" id="DSP-04" control_domain="DSP">
-                        <ccm:description>
-                            Classify data according to its type and sensitivity level.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                    <specs:CCMsecurityControl name="Sensitiver Data Protection" id="DSP-17" control_domain="DSP">
-                        <ccm:description>
-                            Define and implement, processes, procedures and technical measures to protect sensitive data throughout it's lifecycle.
-                        </ccm:description>
-                        <ccm:importance_weight> </ccm:importance_weight>
-                    </specs:CCMsecurityControl>
-
-                </specs:controlFramework>
-                <technology>
-                </technology>
-            </specs:capability>
-
-            <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="">
+            <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="Prevents intruders and malware from accessing the resources">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Security Monitoring and Alerting" id="LOG-03" control_domain="LOG">
@@ -552,7 +417,7 @@
                 </technology>
             </specs:capability>
 
-            <specs:capability id="BREACH_REPORTING" name="Breach Reporting" description="">
+            <specs:capability id="BREACH_REPORTING" name="Breach Reporting" description="Reports any type of security breach detected">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
@@ -581,7 +446,7 @@
                 </technology>
             </specs:capability>
 
-             <specs:capability id="RECOVERY" name="Recovery" description="">
+             <specs:capability id="RECOVERY" name="Recovery" description="capacity of getting recovered from attacks and failures">
                 <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
 
                     <specs:CCMsecurityControl name="Vulnerability Remediation Schedule" id="TVM-03" control_domain="TVM">

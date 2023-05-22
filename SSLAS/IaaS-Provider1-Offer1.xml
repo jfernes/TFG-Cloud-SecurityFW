@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsag:AgreementOffer xmlns:wsag="http://schemas.ggf.org/graap/2007/03/ws-agreement" 
+    xmlns:ccm="http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm" 
+    xmlns:specs="http://www.specs-project.eu/resources/schemas/xml/SLAtemplate" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.ggf.org/graap/2007/03/ws-agreement wsag.xsd   
+    http://www.specs-project.eu/resources/schemas/xml/SLAtemplate SLAtemplate.xsd   
+    http://www.specs-project.eu/resources/schemas/xml/control_frameworks/ccm ccm.xsd" 
+    wsag:AgreementId="IaaS-Provider1-Offer1">
+   <wsag:Name>IaaS-Provider1-Offer1</wsag:Name>
+   <wsag:Context>
+      <wsag:ServiceProvider>Provider</wsag:ServiceProvider>
+      <wsag:ExpirationTime>22-09-2023</wsag:ExpirationTime>
+      <wsag:TemplateName>IaaS Cloud SSLA Template</wsag:TemplateName>
+      <wsag:TemplateId>IAAS_CLOUD_SSLA_TEMPLATE</wsag:TemplateId>
+   </wsag:Context>
+   <wsag:ServiceDescriptionTerm wsag:Name="Infrastructure as a Service Offer" wsag:ServiceName="IaaS">
+      <specs:serviceDescription>
+         <specs:serviceResources>
+            <specs:resourcesProvider id="provider1" name="Provider 1" zone="Europe" description="" />
+         </specs:serviceResources>
+      </specs:serviceDescription>
+      <specs:capabilities>
+         <specs:capability id="INTRUSION_AND_MALWARE_DETECTION" name="Intrusion and Malware Detection" description="Prevents intruders and malware from accessing the resources">
+            <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
+               <specs:CCMsecurityControl name="Security Monitoring and Alerting" id="LOG-03" control_domain="LOG">
+                  <ccm:description>Identify and monitor security-related events within applications and the underlying infrastructure. Define and implement a system to generate alerts to responsible stakeholders based on such events and corresponding metrics.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Detection Updates" id="TVM-04" control_domain="TVM">
+                  <ccm:description>Define, implement and evaluate processes, procedures and technical measures to update detection tools, threat signatures, and indicators of compromise on a weekly, or more frequent basis.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Penetration Testing" id="TVM-06" control_domain="TVM">
+                  <ccm:description>Define, implement and evaluate processes, procedures and technical measures for the periodic performance of penetration testing by independent third parties.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Vulnerability Identification" id="TVM-07" control_domain="TVM">
+                  <ccm:description>Define, implement and evaluate processes, procedures and technical measures for the detection of vulnerabilities on organizationally managed assets at least monthly.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Vulnerability Priorization" id="TVM-08" control_domain="TVM">
+                  <ccm:description>Use a risk-based model for effective prioritization of vulnerability remediation using an industry recognized framework.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+            </specs:controlFramework>
+            <technology>snort 2.4.0</technology>
+         </specs:capability>
+         <specs:capability id="LOGGING" name="Logging" description="Keeps a log with the events registered during the processes">
+            <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
+               <specs:CCMsecurityControl name="Log Protection" id="LOG-09" control_domain="LOG">
+                  <ccm:description>The information system protects audit records from unauthorized access, modification, and deletion.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Encryption Monitoring and Reporting" id="LOG-10" control_domain="LOG">
+                  <ccm:description>Establish and maintain a monitoring and internal reporting capability over the operations of cryptographic, encryption and key management policies, processes, procedures, and controls.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Transaction/Activity Logging" id="LOG-11" control_domain="LOG">
+                  <ccm:description>Log and monitor key lifecycle management events to enable auditing and reporting on usage of cryptographic keys.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Access Control Logs" id="LOG-12" control_domain="LOG">
+                  <ccm:description>Monitor and log physical access using an auditable access control system.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+               <specs:CCMsecurityControl name="Failures And Anomalies Reporting" id="LOG-13" control_domain="LOG">
+                  <ccm:description>Define, implement and evaluate processes, procedures and technical measures for the reporting of anomalies and failures of the monitoring system and provide immediate notification to the accountable party.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+            </specs:controlFramework>
+            <technology>fluentd 0.12</technology>
+         </specs:capability>
+         <specs:capability id="VIRTUAL_FIREWALLS" name="Virtual Firewalls" description="Protect the resources from outsiders">
+            <specs:controlFramework id="CCM_v4.0" frameworkName="CCM Control Framework v4.0">
+               <specs:CCMsecurityControl name="Software Firewalls" id="UEM-10" control_domain="UEM">
+                  <ccm:description>Configure managed endpoints with properly configured software firewalls.</ccm:description>
+                  <ccm:importance_weight />
+               </specs:CCMsecurityControl>
+            </specs:controlFramework>
+            <technology>pfsense 2.5.0</technology>
+         </specs:capability>
+      </specs:capabilities>
+   </wsag:ServiceDescriptionTerm>
+</wsag:AgreementOffer>

@@ -62,14 +62,9 @@ def processSSLA(sslaid, data, processsc):
         for tech in techs:
             if tech not in techsclean:
                 techsclean.append(tech)
-            
-        sys.stderr.write(str(techsclean))
         trust = getCVSS(techsclean)
         sqlupdt = "UPDATE ssla SET trust = %s WHERE id = %s"
-        val =(trust, sslaid)
-    
-        sys.stderr.write(str(trust) + ' ' + str(sslaid))
-        
+        val =(trust, sslaid)        
         cursor.execute(sqlupdt, val)
         
     
@@ -382,8 +377,6 @@ def genContractSSLA(sslaid, customerid, providerid, intents, data):
         cursor.execute(sqlt, val)
         result = cursor.fetchone()
         techs[int] = result[0]
-        
-    sys.stderr.write(str(techs))
     
     xml = generateSSLA(agid, sslaname, sp, exptime, tempname, tempid, sdname,
                        sdservicename, rpid, rpname, rpzone, intents, techs)

@@ -53,7 +53,6 @@ def evaluate(cvss):
         trustv = 1
 
     trustv = 1 - trustv
-    sys.stderr.write('\n\n\n' +  str(trustv) + '\n\n\n')
     return trustv
 
 
@@ -68,7 +67,6 @@ def getCVSS(techs):
         request = Request(url, urlencode(post_fields).encode())
         json_string = urlopen(request).read().decode()
         data = json.loads(json_string)
-        sys.stderr.write(str(data) + '\n')
         for i in data['result']:
             ids.append(i['entry']['id'])
         print(ids)
@@ -78,7 +76,6 @@ def getCVSS(techs):
             request = Request(url, urlencode(post_fields).encode())
             json_string = urlopen(request).read().decode()
             data = json.loads(json_string)
-            sys.stderr.write(str(data)+ '\n')
             for i in data['result']:
                 v = i['vulnerability']['cvss2']['vuldb']['basescore']
                 cvss.append(v)
